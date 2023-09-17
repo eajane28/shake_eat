@@ -21,7 +21,7 @@ class StartupView extends StackedView<StartupViewModel> {
           children: [
             Center(
               child: Image.asset(
-                'assets/foodFrenzy.png',
+                'assets/Shake it - Logo.png',
                 height: 200,
                 width: 200,
               ),
