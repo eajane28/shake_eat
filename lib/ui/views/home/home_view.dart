@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:food_frenzy/ui/views/widgets/button.dart';
 import 'package:stacked/stacked.dart';
 import 'home_viewmodel.dart';
 
@@ -12,21 +13,36 @@ class HomeView extends StackedView<HomeViewModel> {
     Widget? child,
   ) {
     return Scaffold(
-      body: Padding(padding: EdgeInsets.fromLTRB(36.0, 196.0, 36.0, 0.0),
-        child: Center(
-          child: Column(
-            children: [
-              Image.asset("assets/Shake it - Logo.png"),
-              const Text('Choose your preference',
-              textAlign: TextAlign.center,
-              style: TextStyle(
-                color: Color(0xFFFBAB10),
-                fontSize: 20,
-                fontWeight: FontWeight.w700,
-              ),)
-            ],
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Center(
+            child: Column(
+              children: [
+                Image.asset("assets/Shake it - Logo.png"),
+                const Text(
+                  'Choose your preference',
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                    color: Color(0xFFFBAB10),
+                    fontSize: 20,
+                    fontWeight: FontWeight.w700,
+                  ),
+                ),
+                const SizedBox(height: 9.0),
+                GestureDetector(
+                    onTap: viewModel.showPriceRange, child: const SelectionButton(title: 'Price')),
+                const SelectionButton(title: 'Diet'),
+                const SelectionButton(title: 'Distance'),
+                Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 10.0),
+                  child: SizedBox(
+                      height: 250, child: Image.asset('assets/shake.png')),
+                )
+              ],
+            ),
           ),
-        ),
+        ],
       ),
     );
   }
