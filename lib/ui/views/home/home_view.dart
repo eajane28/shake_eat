@@ -31,13 +31,21 @@ class HomeView extends StackedView<HomeViewModel> {
                 ),
                 const SizedBox(height: 9.0),
                 GestureDetector(
-                    onTap: viewModel.showPriceRange, child: const SelectionButton(title: 'Price')),
-                const SelectionButton(title: 'Diet'),
-                const SelectionButton(title: 'Distance'),
+                    onTap: viewModel.showPriceRange,
+                    child: const SelectionButton(title: 'Price')),
+                GestureDetector(
+                    onTap: viewModel.showDietRange,
+                    child: const SelectionButton(title: 'Diet')),
+                GestureDetector(
+                    onTap: viewModel.showDistanceRange,
+                    child: const SelectionButton(title: 'Distance')),
                 Padding(
                   padding: const EdgeInsets.symmetric(vertical: 10.0),
-                  child: SizedBox(
-                      height: 250, child: Image.asset('assets/shake.png')),
+                  child: GestureDetector(
+                    onTap: null,
+                    child: SizedBox(
+                        height: 250, child: Image.asset('assets/shake.png')),
+                  ),
                 )
               ],
             ),

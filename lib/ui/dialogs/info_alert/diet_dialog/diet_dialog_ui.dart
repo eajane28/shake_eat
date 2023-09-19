@@ -4,10 +4,10 @@ import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
 import 'package:stacked_services/stacked_services.dart';
 
-import 'price_dialog_viewmodel.dart';
+import 'diet_dialog_viewmodel.dart';
 
-class PriceDialogUi extends StackedView<PriceDialogViewModel> {
-  PriceDialogUi({
+class DietDialogUi extends StackedView<DietDialogViewModel> {
+  DietDialogUi({
     super.key,
     required this.request,
     required this.completer,
@@ -19,7 +19,7 @@ class PriceDialogUi extends StackedView<PriceDialogViewModel> {
 
   @override
   Widget builder(
-      BuildContext context, PriceDialogViewModel viewModel, Widget? child) {
+      BuildContext context, DietDialogViewModel viewModel, Widget? child) {
     Color getColor(Set<MaterialState> states) {
       const Set<MaterialState> interactiveStates = <MaterialState>{
         MaterialState.selected,
@@ -46,7 +46,7 @@ class PriceDialogUi extends StackedView<PriceDialogViewModel> {
                 request.title!,
                 style: const TextStyle(
                     color: Color(0xFFDA1D1D),
-                    fontSize: 30,
+                    fontSize: 22,
                     fontWeight: FontWeight.w600),
               ),
             ),
@@ -71,7 +71,7 @@ class PriceDialogUi extends StackedView<PriceDialogViewModel> {
                     ),
                   ),
                   const SizedBox(width: 9.0),
-                  const Text("Cheap",
+                  const Text("Any",
                       style: TextStyle(
                         color: Color(0xFFDA1D1D),
                         fontSize: 20.0,
@@ -101,7 +101,7 @@ class PriceDialogUi extends StackedView<PriceDialogViewModel> {
                     ),
                   ),
                   const SizedBox(width: 9.0),
-                  const Text("Affordable",
+                  const Text("Vegetarian",
                       style: TextStyle(
                         color: Color(0xFFDA1D1D),
                         fontSize: 20.0,
@@ -131,7 +131,7 @@ class PriceDialogUi extends StackedView<PriceDialogViewModel> {
                     ),
                   ),
                   const SizedBox(width: 9.0),
-                  const Text("Expensive",
+                  const Text("Pescetarian",
                       style: TextStyle(
                         color: Color(0xFFDA1D1D),
                         fontSize: 20.0,
@@ -155,14 +155,14 @@ class PriceDialogUi extends StackedView<PriceDialogViewModel> {
                     borderRadius: BorderRadius.circular(10),
                   ),
                   child:
-                      // viewModel.isBusy
-                      //     ? const Center(
-                      //         child: CircularProgressIndicator(
-                      //           color: Colors.white,
-                      //         ),
-                      //       )
-                      //     :
-                      const Text(
+                  // viewModel.isBusy
+                  //     ? const Center(
+                  //         child: CircularProgressIndicator(
+                  //           color: Colors.white,
+                  //         ),
+                  //       )
+                  //     :
+                  const Text(
                     'Save',
                     style: TextStyle(
                       color: Color(0xFFDA1D1D),
@@ -180,7 +180,7 @@ class PriceDialogUi extends StackedView<PriceDialogViewModel> {
   }
 
   @override
-  PriceDialogViewModel viewModelBuilder(BuildContext context) {
-    return PriceDialogViewModel();
+  DietDialogViewModel viewModelBuilder(BuildContext context) {
+    return DietDialogViewModel();
   }
 }

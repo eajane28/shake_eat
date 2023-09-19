@@ -13,4 +13,20 @@ class HomeViewModel extends BaseViewModel {
       description: "",
     );
   }
+
+  void showDietRange() async {
+    await _dialogService.showCustomDialog(
+      title: "Select dietary preference",
+      variant: DialogType.DietDialogUi,
+      description: "",
+    );
+  }
+
+  void showDistanceRange() async {
+    await _dialogService.showCustomDialog(
+      title: "Select distance",
+      variant: DialogType.DistanceDialogUi,
+      description: "",
+    );
+  }
 }

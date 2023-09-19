@@ -4,10 +4,10 @@ import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
 import 'package:stacked_services/stacked_services.dart';
 
-import 'price_dialog_viewmodel.dart';
+import 'distance_dialog_viewmodel.dart';
 
-class PriceDialogUi extends StackedView<PriceDialogViewModel> {
-  PriceDialogUi({
+class DistanceDialogUi extends StackedView<DistanceDialogViewModel> {
+  DistanceDialogUi({
     super.key,
     required this.request,
     required this.completer,
@@ -19,7 +19,7 @@ class PriceDialogUi extends StackedView<PriceDialogViewModel> {
 
   @override
   Widget builder(
-      BuildContext context, PriceDialogViewModel viewModel, Widget? child) {
+      BuildContext context, DistanceDialogViewModel viewModel, Widget? child) {
     Color getColor(Set<MaterialState> states) {
       const Set<MaterialState> interactiveStates = <MaterialState>{
         MaterialState.selected,
@@ -71,7 +71,7 @@ class PriceDialogUi extends StackedView<PriceDialogViewModel> {
                     ),
                   ),
                   const SizedBox(width: 9.0),
-                  const Text("Cheap",
+                  const Text("Nearby",
                       style: TextStyle(
                         color: Color(0xFFDA1D1D),
                         fontSize: 20.0,
@@ -101,7 +101,7 @@ class PriceDialogUi extends StackedView<PriceDialogViewModel> {
                     ),
                   ),
                   const SizedBox(width: 9.0),
-                  const Text("Affordable",
+                  const Text("Moderate",
                       style: TextStyle(
                         color: Color(0xFFDA1D1D),
                         fontSize: 20.0,
@@ -131,7 +131,7 @@ class PriceDialogUi extends StackedView<PriceDialogViewModel> {
                     ),
                   ),
                   const SizedBox(width: 9.0),
-                  const Text("Expensive",
+                  const Text("Far",
                       style: TextStyle(
                         color: Color(0xFFDA1D1D),
                         fontSize: 20.0,
@@ -155,14 +155,14 @@ class PriceDialogUi extends StackedView<PriceDialogViewModel> {
                     borderRadius: BorderRadius.circular(10),
                   ),
                   child:
-                      // viewModel.isBusy
-                      //     ? const Center(
-                      //         child: CircularProgressIndicator(
-                      //           color: Colors.white,
-                      //         ),
-                      //       )
-                      //     :
-                      const Text(
+                  // viewModel.isBusy
+                  //     ? const Center(
+                  //         child: CircularProgressIndicator(
+                  //           color: Colors.white,
+                  //         ),
+                  //       )
+                  //     :
+                  const Text(
                     'Save',
                     style: TextStyle(
                       color: Color(0xFFDA1D1D),
@@ -180,7 +180,7 @@ class PriceDialogUi extends StackedView<PriceDialogViewModel> {
   }
 
   @override
-  PriceDialogViewModel viewModelBuilder(BuildContext context) {
-    return PriceDialogViewModel();
+  DistanceDialogViewModel viewModelBuilder(BuildContext context) {
+    return DistanceDialogViewModel();
   }
 }
