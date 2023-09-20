@@ -41,11 +41,11 @@ class HomeView extends StackedView<HomeViewModel> {
                     child: const SelectionButton(title: 'Distance')),
                 Padding(
                   padding: const EdgeInsets.symmetric(vertical: 10.0),
-                  child: GestureDetector(
-                    onTap: null,
-                    child: SizedBox(
-                        height: 250, child: Image.asset('assets/shake.png')),
-                  ),
+                  child: SizedBox(
+                      height: 250,
+                      child: GestureDetector(
+                          onTap: viewModel.navigateToShaking,
+                          child: Image.asset('assets/shake.png'))),
                 )
               ],
             ),

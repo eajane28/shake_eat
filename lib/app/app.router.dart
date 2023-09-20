@@ -5,13 +5,17 @@
 // **************************************************************************
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
-import 'package:flutter/material.dart' as _i5;
+import 'package:flutter/material.dart' as _i9;
 import 'package:flutter/material.dart';
 import 'package:food_frenzy/ui/views/home/home_view.dart' as _i2;
 import 'package:food_frenzy/ui/views/interactive/interactive_view.dart' as _i4;
+import 'package:food_frenzy/ui/views/one/one_view.dart' as _i7;
+import 'package:food_frenzy/ui/views/shaking/shaking_view.dart' as _i8;
 import 'package:food_frenzy/ui/views/startup/startup_view.dart' as _i3;
+import 'package:food_frenzy/ui/views/three/three_view.dart' as _i5;
+import 'package:food_frenzy/ui/views/two/two_view.dart' as _i6;
 import 'package:stacked/stacked.dart' as _i1;
-import 'package:stacked_services/stacked_services.dart' as _i6;
+import 'package:stacked_services/stacked_services.dart' as _i10;
 
 class Routes {
   static const homeView = '/home-view';
@@ -20,10 +24,22 @@ class Routes {
 
   static const interactiveView = '/interactive-view';
 
+  static const threeView = '/three-view';
+
+  static const twoView = '/two-view';
+
+  static const oneView = '/one-view';
+
+  static const shakingView = '/shaking-view';
+
   static const all = <String>{
     homeView,
     startupView,
     interactiveView,
+    threeView,
+    twoView,
+    oneView,
+    shakingView,
   };
 }
 
@@ -41,24 +57,64 @@ class StackedRouter extends _i1.RouterBase {
       Routes.interactiveView,
       page: _i4.InteractiveView,
     ),
+    _i1.RouteDef(
+      Routes.threeView,
+      page: _i5.ThreeView,
+    ),
+    _i1.RouteDef(
+      Routes.twoView,
+      page: _i6.TwoView,
+    ),
+    _i1.RouteDef(
+      Routes.oneView,
+      page: _i7.OneView,
+    ),
+    _i1.RouteDef(
+      Routes.shakingView,
+      page: _i8.ShakingView,
+    ),
   ];
 
   final _pagesMap = <Type, _i1.StackedRouteFactory>{
     _i2.HomeView: (data) {
-      return _i5.MaterialPageRoute<dynamic>(
+      return _i9.MaterialPageRoute<dynamic>(
         builder: (context) => const _i2.HomeView(),
         settings: data,
       );
     },
     _i3.StartupView: (data) {
-      return _i5.MaterialPageRoute<dynamic>(
+      return _i9.MaterialPageRoute<dynamic>(
         builder: (context) => const _i3.StartupView(),
         settings: data,
       );
     },
     _i4.InteractiveView: (data) {
-      return _i5.MaterialPageRoute<dynamic>(
+      return _i9.MaterialPageRoute<dynamic>(
         builder: (context) => const _i4.InteractiveView(),
+        settings: data,
+      );
+    },
+    _i5.ThreeView: (data) {
+      return _i9.MaterialPageRoute<dynamic>(
+        builder: (context) => const _i5.ThreeView(),
+        settings: data,
+      );
+    },
+    _i6.TwoView: (data) {
+      return _i9.MaterialPageRoute<dynamic>(
+        builder: (context) => const _i6.TwoView(),
+        settings: data,
+      );
+    },
+    _i7.OneView: (data) {
+      return _i9.MaterialPageRoute<dynamic>(
+        builder: (context) => const _i7.OneView(),
+        settings: data,
+      );
+    },
+    _i8.ShakingView: (data) {
+      return _i9.MaterialPageRoute<dynamic>(
+        builder: (context) => const _i8.ShakingView(),
         settings: data,
       );
     },
@@ -70,7 +126,7 @@ class StackedRouter extends _i1.RouterBase {
   Map<Type, _i1.StackedRouteFactory> get pagesMap => _pagesMap;
 }
 
-extension NavigatorStateExtension on _i6.NavigationService {
+extension NavigatorStateExtension on _i10.NavigationService {
   Future<dynamic> navigateToHomeView([
     int? routerId,
     bool preventDuplicates = true,
@@ -113,6 +169,62 @@ extension NavigatorStateExtension on _i6.NavigationService {
         transition: transition);
   }
 
+  Future<dynamic> navigateToThreeView([
+    int? routerId,
+    bool preventDuplicates = true,
+    Map<String, String>? parameters,
+    Widget Function(BuildContext, Animation<double>, Animation<double>, Widget)?
+        transition,
+  ]) async {
+    return navigateTo<dynamic>(Routes.threeView,
+        id: routerId,
+        preventDuplicates: preventDuplicates,
+        parameters: parameters,
+        transition: transition);
+  }
+
+  Future<dynamic> navigateToTwoView([
+    int? routerId,
+    bool preventDuplicates = true,
+    Map<String, String>? parameters,
+    Widget Function(BuildContext, Animation<double>, Animation<double>, Widget)?
+        transition,
+  ]) async {
+    return navigateTo<dynamic>(Routes.twoView,
+        id: routerId,
+        preventDuplicates: preventDuplicates,
+        parameters: parameters,
+        transition: transition);
+  }
+
+  Future<dynamic> navigateToOneView([
+    int? routerId,
+    bool preventDuplicates = true,
+    Map<String, String>? parameters,
+    Widget Function(BuildContext, Animation<double>, Animation<double>, Widget)?
+        transition,
+  ]) async {
+    return navigateTo<dynamic>(Routes.oneView,
+        id: routerId,
+        preventDuplicates: preventDuplicates,
+        parameters: parameters,
+        transition: transition);
+  }
+
+  Future<dynamic> navigateToShakingView([
+    int? routerId,
+    bool preventDuplicates = true,
+    Map<String, String>? parameters,
+    Widget Function(BuildContext, Animation<double>, Animation<double>, Widget)?
+        transition,
+  ]) async {
+    return navigateTo<dynamic>(Routes.shakingView,
+        id: routerId,
+        preventDuplicates: preventDuplicates,
+        parameters: parameters,
+        transition: transition);
+  }
+
   Future<dynamic> replaceWithHomeView([
     int? routerId,
     bool preventDuplicates = true,
@@ -149,6 +261,62 @@ extension NavigatorStateExtension on _i6.NavigationService {
         transition,
   ]) async {
     return replaceWith<dynamic>(Routes.interactiveView,
+        id: routerId,
+        preventDuplicates: preventDuplicates,
+        parameters: parameters,
+        transition: transition);
+  }
+
+  Future<dynamic> replaceWithThreeView([
+    int? routerId,
+    bool preventDuplicates = true,
+    Map<String, String>? parameters,
+    Widget Function(BuildContext, Animation<double>, Animation<double>, Widget)?
+        transition,
+  ]) async {
+    return replaceWith<dynamic>(Routes.threeView,
+        id: routerId,
+        preventDuplicates: preventDuplicates,
+        parameters: parameters,
+        transition: transition);
+  }
+
+  Future<dynamic> replaceWithTwoView([
+    int? routerId,
+    bool preventDuplicates = true,
+    Map<String, String>? parameters,
+    Widget Function(BuildContext, Animation<double>, Animation<double>, Widget)?
+        transition,
+  ]) async {
+    return replaceWith<dynamic>(Routes.twoView,
+        id: routerId,
+        preventDuplicates: preventDuplicates,
+        parameters: parameters,
+        transition: transition);
+  }
+
+  Future<dynamic> replaceWithOneView([
+    int? routerId,
+    bool preventDuplicates = true,
+    Map<String, String>? parameters,
+    Widget Function(BuildContext, Animation<double>, Animation<double>, Widget)?
+        transition,
+  ]) async {
+    return replaceWith<dynamic>(Routes.oneView,
+        id: routerId,
+        preventDuplicates: preventDuplicates,
+        parameters: parameters,
+        transition: transition);
+  }
+
+  Future<dynamic> replaceWithShakingView([
+    int? routerId,
+    bool preventDuplicates = true,
+    Map<String, String>? parameters,
+    Widget Function(BuildContext, Animation<double>, Animation<double>, Widget)?
+        transition,
+  ]) async {
+    return replaceWith<dynamic>(Routes.shakingView,
         id: routerId,
         preventDuplicates: preventDuplicates,
         parameters: parameters,

@@ -1,6 +1,3 @@
-
 import 'package:stacked/stacked.dart';
 
-class PriceDialogViewModel extends BaseViewModel {
-
-}
+class PriceDialogViewModel extends BaseViewModel {}

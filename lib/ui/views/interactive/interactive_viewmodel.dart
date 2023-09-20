@@ -7,7 +7,7 @@ import '../../../app/app.locator.dart';
 class InteractiveViewModel extends BaseViewModel {
   final _navigationService = locator<NavigationService>();
 
-  void toHomeView(){
+  void toHomeView() {
     _navigationService.navigateToHomeView();
   }
 }

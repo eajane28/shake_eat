@@ -1,6 +1,3 @@
-
 import 'package:stacked/stacked.dart';
 
-class DietDialogViewModel extends BaseViewModel {
-
-}
+class DietDialogViewModel extends BaseViewModel {}

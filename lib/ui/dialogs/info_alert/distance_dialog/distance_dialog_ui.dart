@@ -155,14 +155,14 @@ class DistanceDialogUi extends StackedView<DistanceDialogViewModel> {
                     borderRadius: BorderRadius.circular(10),
                   ),
                   child:
-                  // viewModel.isBusy
-                  //     ? const Center(
-                  //         child: CircularProgressIndicator(
-                  //           color: Colors.white,
-                  //         ),
-                  //       )
-                  //     :
-                  const Text(
+                      // viewModel.isBusy
+                      //     ? const Center(
+                      //         child: CircularProgressIndicator(
+                      //           color: Colors.white,
+                      //         ),
+                      //       )
+                      //     :
+                      const Text(
                     'Save',
                     style: TextStyle(
                       color: Color(0xFFDA1D1D),

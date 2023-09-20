@@ -5,6 +5,10 @@ import 'package:food_frenzy/ui/views/startup/startup_view.dart';
 import 'package:stacked/stacked_annotations.dart';
 import 'package:stacked_services/stacked_services.dart';
 import 'package:food_frenzy/ui/views/interactive/interactive_view.dart';
+import 'package:food_frenzy/ui/views/three/three_view.dart';
+import 'package:food_frenzy/ui/views/two/two_view.dart';
+import 'package:food_frenzy/ui/views/one/one_view.dart';
+import 'package:food_frenzy/ui/views/shaking/shaking_view.dart';
 // @stacked-import
 
 @StackedApp(
@@ -12,6 +16,10 @@ import 'package:food_frenzy/ui/views/interactive/interactive_view.dart';
     MaterialRoute(page: HomeView),
     MaterialRoute(page: StartupView),
     MaterialRoute(page: InteractiveView),
+    MaterialRoute(page: ThreeView),
+    MaterialRoute(page: TwoView),
+    MaterialRoute(page: OneView),
+    MaterialRoute(page: ShakingView),
 // @stacked-route
   ],
   dependencies: [
