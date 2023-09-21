@@ -30,7 +30,7 @@ class InteractiveView extends StackedView<InteractiveViewModel> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 GestureDetector(
-                  onTap: null,
+                  onTap: viewModel.toShareView,
                   child: Container(
                     width: 35,
                     height: 32,

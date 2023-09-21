@@ -13,10 +13,9 @@ class ShakingView extends StackedView<ShakingViewModel> {
     Widget? child,
   ) {
     return Scaffold(
-      body: Center(
-        child: Image.asset('assets/Shake1.png'),
-      )
-    );
+        body: Center(
+      child: Image.asset('assets/Shake1.png'),
+    ));
   }
 
   @override

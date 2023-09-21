@@ -10,4 +10,8 @@ class InteractiveViewModel extends BaseViewModel {
   void toHomeView() {
     _navigationService.navigateToHomeView();
   }
+
+  void toShareView(){
+    _navigationService.navigateToShareView();
+  }
 }
