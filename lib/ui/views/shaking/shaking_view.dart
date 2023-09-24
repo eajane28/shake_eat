@@ -8,10 +8,10 @@ class ShakingView extends StackedView<ShakingViewModel> {
 
   @override
   Widget builder(
-      BuildContext context,
-      ShakingViewModel viewModel,
-      Widget? child,
-      ) {
+    BuildContext context,
+    ShakingViewModel viewModel,
+    Widget? child,
+  ) {
     return const Scaffold(
       body: Center(
         child: ShakeAnimationWidget(), // Use the ShakeAnimationWidget
@@ -21,8 +21,8 @@ class ShakingView extends StackedView<ShakingViewModel> {
 
   @override
   ShakingViewModel viewModelBuilder(
-      BuildContext context,
-      ) =>
+    BuildContext context,
+  ) =>
       ShakingViewModel();
 }
 

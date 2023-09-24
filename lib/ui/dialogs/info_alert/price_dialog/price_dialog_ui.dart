@@ -40,7 +40,8 @@ class PriceDialogUi extends StatelessWidget {
         }
 
         return Dialog(
-          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+          shape:
+              RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
           backgroundColor: const Color(0xFFFBAB10),
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
@@ -70,7 +71,8 @@ class PriceDialogUi extends StatelessWidget {
                             color: Colors.white,
                             child: Checkbox(
                               checkColor: Colors.black,
-                              fillColor: MaterialStateProperty.resolveWith(getColor),
+                              fillColor:
+                                  MaterialStateProperty.resolveWith(getColor),
                               value: model.checkBoxValues[i],
                               onChanged: (bool? newValue) {
                                 model.updateCheckBoxValue(i, newValue ?? false);

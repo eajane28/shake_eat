@@ -30,7 +30,7 @@ class ShareView extends StackedView<ShareViewModel> {
             child: Row(children: [
               const SizedBox(width: 30.0),
               GestureDetector(
-                  onTap: null,
+                  onTap: viewModel.toInteractiveView,
                   child: const Icon(Icons.chevron_left,
                       color: Colors.white, size: 40.0)),
               const Text(
@@ -74,7 +74,8 @@ class ShareView extends StackedView<ShareViewModel> {
                                 child: Stack(
                                   children: [
                                     Center(
-                                      child: SvgPicture.asset('assets/messenger.svg'),
+                                      child: SvgPicture.asset(
+                                          'assets/messenger.svg'),
                                     ),
                                   ],
                                 ),
@@ -84,7 +85,9 @@ class ShareView extends StackedView<ShareViewModel> {
                               ),
                               const Text('Message',
                                   style: TextStyle(
-                                      color: Colors.white, fontSize: 10.0, fontWeight: FontWeight.w500)),
+                                      color: Colors.white,
+                                      fontSize: 10.0,
+                                      fontWeight: FontWeight.w500)),
                             ],
                           ),
                           Column(
@@ -98,8 +101,8 @@ class ShareView extends StackedView<ShareViewModel> {
                                 child: Stack(
                                   children: [
                                     Center(
-                                      child: SvgPicture.asset('assets/group.svg')
-                                    ),
+                                        child: SvgPicture.asset(
+                                            'assets/group.svg')),
                                   ],
                                 ),
                               ),
@@ -108,7 +111,9 @@ class ShareView extends StackedView<ShareViewModel> {
                               ),
                               const Text('Group',
                                   style: TextStyle(
-                                      color: Colors.white, fontSize: 10.0, fontWeight: FontWeight.w500)),
+                                      color: Colors.white,
+                                      fontSize: 10.0,
+                                      fontWeight: FontWeight.w500)),
                             ],
                           ),
                           Column(
@@ -122,8 +127,8 @@ class ShareView extends StackedView<ShareViewModel> {
                                 child: Stack(
                                   children: [
                                     Center(
-                                      child: SvgPicture.asset('assets/link.svg')
-                                    ),
+                                        child: SvgPicture.asset(
+                                            'assets/link.svg')),
                                   ],
                                 ),
                               ),
@@ -132,7 +137,9 @@ class ShareView extends StackedView<ShareViewModel> {
                               ),
                               const Text('Copy link',
                                   style: TextStyle(
-                                      color: Colors.white, fontSize: 10.0, fontWeight: FontWeight.w500)),
+                                      color: Colors.white,
+                                      fontSize: 10.0,
+                                      fontWeight: FontWeight.w500)),
                             ],
                           ),
                           Column(
@@ -146,8 +153,8 @@ class ShareView extends StackedView<ShareViewModel> {
                                 child: Stack(
                                   children: [
                                     Center(
-                                      child: SvgPicture.asset('assets/more.svg')
-                                    ),
+                                        child: SvgPicture.asset(
+                                            'assets/more.svg')),
                                   ],
                                 ),
                               ),
@@ -156,7 +163,9 @@ class ShareView extends StackedView<ShareViewModel> {
                               ),
                               const Text('More',
                                   style: TextStyle(
-                                      color: Colors.white, fontSize: 10.0, fontWeight: FontWeight.w500)),
+                                      color: Colors.white,
+                                      fontSize: 10.0,
+                                      fontWeight: FontWeight.w500)),
                             ],
                           ),
                         ],

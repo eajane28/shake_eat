@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
 import 'package:stacked_services/stacked_services.dart';
 
-
 class DietDialogViewModel extends BaseViewModel {
   List<String> labels = ["any", "vegetarian", "pescatarian", "halal"];
   List<bool> checkBoxValues = [false, false, false, false];
@@ -43,7 +42,8 @@ class DietDialogUi extends StatelessWidget {
         }
 
         return Dialog(
-          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+          shape:
+              RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
           backgroundColor: const Color(0xFFFBAB10),
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
@@ -73,7 +73,8 @@ class DietDialogUi extends StatelessWidget {
                             color: Colors.white,
                             child: Checkbox(
                               checkColor: Colors.black,
-                              fillColor: MaterialStateProperty.resolveWith(getColor),
+                              fillColor:
+                                  MaterialStateProperty.resolveWith(getColor),
                               value: model.checkBoxValues[i],
                               onChanged: (bool? newValue) {
                                 model.updateCheckBoxValue(i, newValue ?? false);
@@ -126,4 +127,3 @@ class DietDialogUi extends StatelessWidget {
     );
   }
 }
-

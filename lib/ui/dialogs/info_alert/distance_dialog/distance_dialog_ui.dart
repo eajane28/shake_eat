@@ -29,16 +29,17 @@ class DistanceDialogUi extends StatelessWidget {
         double maxSlider = 20;
         String distanceLabel = 'Near'; // Default label
 
-        if (model.sliderValue <= maxSlider/3) {
+        if (model.sliderValue <= maxSlider / 3) {
           distanceLabel = 'Near';
-        } else if (model.sliderValue <= (maxSlider/3)*2){
+        } else if (model.sliderValue <= (maxSlider / 3) * 2) {
           distanceLabel = 'Moderate';
         } else {
           distanceLabel = 'Far';
         }
 
         return Dialog(
-          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+          shape:
+              RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
           backgroundColor: const Color(0xFFFBAB10),
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
