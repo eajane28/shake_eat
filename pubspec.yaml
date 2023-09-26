@@ -10,6 +10,7 @@ dependencies:
   sensors: ^2.0.3
   flutter:
     sdk: flutter
+  share: ^2.0.4
   url_launcher: ^6.0.6
   flutter_svg: ^2.0.7
   get: ^4.6.5
