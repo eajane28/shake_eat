@@ -11,74 +11,99 @@ class AfterShakeView extends StackedView<AfterShakeViewModel> {
 
   @override
   Widget builder(
-      BuildContext context,
-      AfterShakeViewModel viewModel,
-      Widget? child,
-      ) {
+    BuildContext context,
+    AfterShakeViewModel viewModel,
+    Widget? child,
+  ) {
     return Scaffold(
       body: SafeArea(
-        child: Column(
-          children: [
-            Stack(
-              children: [
-                Container(
-                  width: MediaQuery.of(context).size.width,
-                  height: 405,
-                  decoration: const BoxDecoration(
-                    color: Color(0xFFDA1D1D),
-                    borderRadius: BorderRadius.only(
-                      topLeft: Radius.circular(50.0),
-                      topRight: Radius.circular(50.0),
-                      bottomLeft: Radius.circular(150.0),
-                      bottomRight: Radius.circular(150.0),
-                    ),
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(
-                      top: 225.0, left: 50.0, right: 50.0),
-                  child: Image.asset('assets/paengs.png',
-                      height: 289, width: 400),
-                )
-              ],
-            ),
-            Padding(
-              padding: const EdgeInsets.only(top: 100.0),
-              child: ElevatedButton(
-                onPressed: () {
-                  openMapWithDirections("SPBg868AV5zXueX47");
-                },
-                child: const Text(
-                  'Open in Map',
-                  style: TextStyle(fontSize: 18.0),
-                ),
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.only(top: 20.0),
-              child: GestureDetector(
-                onTap: viewModel.navigateToShaking,
-                child: Container(
-                  width: 137.0,
-                  height: 39.0,
-                  decoration: BoxDecoration(
-                    color: const Color(0xFFDA1D1D),
-                    borderRadius: BorderRadius.circular(10.0),
-                  ),
-                  child: const Center(
-                    child: Text(
-                      'Shake again',
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 20.0,
-                        fontWeight: FontWeight.w600,
+        child: GestureDetector(
+          onTap: null,
+          child: Column(
+            children: [
+              Stack(
+                children: [
+                  Container(
+                    width: MediaQuery.of(context).size.width,
+                    height: 405,
+                    decoration: const BoxDecoration(
+                      color: Color(0xFFDA1D1D),
+                      borderRadius: BorderRadius.only(
+                        topLeft: Radius.circular(50.0),
+                        topRight: Radius.circular(50.0),
+                        bottomLeft: Radius.circular(150.0),
+                        bottomRight: Radius.circular(150.0),
                       ),
                     ),
                   ),
-                ),
+                  Padding(
+                    padding: const EdgeInsets.only(top: 65.0),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children:[
+                        Container(
+                          margin: const EdgeInsets.symmetric(horizontal: 4.0),
+                          width: 61,
+                          height: 6,
+                          decoration: BoxDecoration(
+                            color: const Color(0xFFFBAB10),
+                            borderRadius: BorderRadius.circular(5.0),
+                          ),
+                        ),
+                        Container(
+                          margin: const EdgeInsets.symmetric(horizontal: 4.0),
+                          width: 61,
+                          height: 6,
+                          decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.circular(5.0),
+                          ),
+                        ),
+                        Container(
+                          margin: const EdgeInsets.symmetric(horizontal: 4.0),
+                          width: 61,
+                          height: 6,
+                          decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.circular(5.0),
+                          ),
+                        ),
+                      ]
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(
+                        top: 225.0, left: 50.0, right: 50.0),
+                    child:
+                        Image.asset('assets/paengs.png', height: 289, width: 400),
+                  )
+                ],
               ),
-            ),
-          ],
+              Padding(
+                  padding: const EdgeInsets.only(top: 100.0),
+                  child: GestureDetector(
+                    onTap: viewModel.navigateToShaking,
+                    child: Container(
+                      width: 137.0,
+                      height: 39.0,
+                      decoration: BoxDecoration(
+                        color: const Color(0xFFDA1D1D),
+                        borderRadius: BorderRadius.circular(10.0),
+                      ),
+                      child: const Center(
+                        child: Text(
+                          'Reshake',
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 20.0,
+                            fontWeight: FontWeight.w600,
+                          ),
+                        ),
+                      ),
+                    ),
+                  )),
+            ],
+          ),
         ),
       ),
     );
