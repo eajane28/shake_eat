@@ -1,23 +1,21 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
-import 'package:url_launcher/url_launcher.dart';
 
-import 'after_shake_viewmodel.dart';
+import 'details_viewmodel.dart';
 
-class AfterShakeView extends StackedView<AfterShakeViewModel> {
-  const AfterShakeView({Key? key}) : super(key: key);
+class DetailsView extends StackedView<DetailsViewModel> {
+  const DetailsView({Key? key}) : super(key: key);
 
   @override
   Widget builder(
     BuildContext context,
-    AfterShakeViewModel viewModel,
+    DetailsViewModel viewModel,
     Widget? child,
   ) {
     return Scaffold(
       body: SafeArea(
         child: GestureDetector(
-          onTap: viewModel.navigateToDetails,
+          onTap: null,
           child: Column(
             children: [
               Stack(
@@ -45,7 +43,7 @@ class AfterShakeView extends StackedView<AfterShakeViewModel> {
                             width: 61,
                             height: 6,
                             decoration: BoxDecoration(
-                              color: const Color(0xFFFBAB10),
+                              color: Colors.white,
                               borderRadius: BorderRadius.circular(5.0),
                             ),
                           ),
@@ -54,7 +52,7 @@ class AfterShakeView extends StackedView<AfterShakeViewModel> {
                             width: 61,
                             height: 6,
                             decoration: BoxDecoration(
-                              color: Colors.white,
+                              color: const Color(0xFFFBAB10),
                               borderRadius: BorderRadius.circular(5.0),
                             ),
                           ),
@@ -69,37 +67,15 @@ class AfterShakeView extends StackedView<AfterShakeViewModel> {
                           ),
                         ]),
                   ),
-                  Padding(
-                    padding: const EdgeInsets.only(
-                        top: 225.0, left: 50.0, right: 50.0),
-                    child: Image.asset('assets/paengs.png',
-                        height: 289, width: 400),
-                  )
+                  const Padding(padding: EdgeInsets.fromLTRB(60.0, 165.0, 60.0, 0.0),
+                  child: Column(
+                    children: [
+
+                    ]
+                  ),)
                 ],
               ),
-              Padding(
-                  padding: const EdgeInsets.only(top: 100.0),
-                  child: GestureDetector(
-                    onTap: viewModel.navigateToShaking,
-                    child: Container(
-                      width: 137.0,
-                      height: 39.0,
-                      decoration: BoxDecoration(
-                        color: const Color(0xFFDA1D1D),
-                        borderRadius: BorderRadius.circular(10.0),
-                      ),
-                      child: const Center(
-                        child: Text(
-                          'Reshake',
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 20.0,
-                            fontWeight: FontWeight.w600,
-                          ),
-                        ),
-                      ),
-                    ),
-                  )),
+
             ],
           ),
         ),
@@ -107,25 +83,9 @@ class AfterShakeView extends StackedView<AfterShakeViewModel> {
     );
   }
 
-  void openMapWithDirections(String mapId) async {
-    if (kDebugMode) {
-      print("Creating variable for map");
-    }
-    Uri map = Uri.https('maps.app.goo.gl', '/$mapId', {});
-    if (kDebugMode) {
-      print("Map created");
-      print(map);
-      print("Launching map");
-    }
-    launchUrl(map);
-    // if (await canLaunchUrl(map)) {
-    //   await launchUrl(map);
-    // } else {
-    //   throw 'Could not launch';
-    // }
-  }
-
   @override
-  AfterShakeViewModel viewModelBuilder(BuildContext context) =>
-      AfterShakeViewModel();
+  DetailsViewModel viewModelBuilder(
+    BuildContext context,
+  ) =>
+      DetailsViewModel();
 }

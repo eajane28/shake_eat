@@ -11,6 +11,7 @@ import 'package:food_frenzy/ui/views/one/one_view.dart';
 import 'package:food_frenzy/ui/views/shaking/shaking_view.dart';
 import 'package:food_frenzy/ui/views/share/share_view.dart';
 import 'package:food_frenzy/ui/views/after_shake/after_shake_view.dart';
+import 'package:food_frenzy/ui/views/details/details_view.dart';
 // @stacked-import
 
 @StackedApp(
@@ -25,6 +26,7 @@ import 'package:food_frenzy/ui/views/after_shake/after_shake_view.dart';
     MaterialRoute(page: ShareView),
     MaterialRoute(page: AfterShakeView),
     MaterialRoute(page: AfterShakeView),
+    MaterialRoute(page: DetailsView),
 // @stacked-route
   ],
   dependencies: [
