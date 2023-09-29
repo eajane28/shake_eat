@@ -300,8 +300,6 @@ extension NavigatorStateExtension on _i13.NavigationService {
         transition: transition);
   }
 
-
-
   Future<dynamic> navigateToDetailsView([
     int? routerId,
     bool preventDuplicates = true,
@@ -441,7 +439,6 @@ extension NavigatorStateExtension on _i13.NavigationService {
         parameters: parameters,
         transition: transition);
   }
-
 
   Future<dynamic> replaceWithDetailsView([
     int? routerId,
