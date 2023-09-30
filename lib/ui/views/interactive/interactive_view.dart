@@ -31,9 +31,11 @@ class InteractiveView extends StackedView<InteractiveViewModel> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 GestureDetector(
-                  onTap: (){
-                    const String appLink = "https://github.com/eajane28/shake_eat/releases";
-                    const String message = "Checkout this awesome app for choosing where to eat randomly!\n$appLink";
+                  onTap: () {
+                    const String appLink =
+                        "https://github.com/eajane28/shake_eat/releases";
+                    const String message =
+                        "Checkout this awesome app for choosing where to eat randomly!\n$appLink";
                     Share.share(message);
                   },
                   child: Container(

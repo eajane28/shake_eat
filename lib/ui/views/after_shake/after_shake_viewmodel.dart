@@ -25,7 +25,7 @@ class AfterShakeViewModel extends BaseViewModel {
     });
   }
 
-  void navigateToDetails(){
+  void navigateToDetails() {
     _navigationService.navigateToDetailsView();
   }
 }

@@ -15,9 +15,9 @@ class DetailsView extends StackedView<DetailsViewModel> {
   ) {
     return Scaffold(
       body: SafeArea(
-        child: SingleChildScrollView(
-          child: GestureDetector(
-            onTap: null,
+        child: GestureDetector(
+          onTap: viewModel.navigateToRedeem,
+          child: SingleChildScrollView(
             child: Column(
               children: [
                 Stack(
@@ -41,7 +41,8 @@ class DetailsView extends StackedView<DetailsViewModel> {
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Container(
-                              margin: const EdgeInsets.symmetric(horizontal: 4.0),
+                              margin:
+                                  const EdgeInsets.symmetric(horizontal: 4.0),
                               width: 61,
                               height: 6,
                               decoration: BoxDecoration(
@@ -50,7 +51,8 @@ class DetailsView extends StackedView<DetailsViewModel> {
                               ),
                             ),
                             Container(
-                              margin: const EdgeInsets.symmetric(horizontal: 4.0),
+                              margin:
+                                  const EdgeInsets.symmetric(horizontal: 4.0),
                               width: 61,
                               height: 6,
                               decoration: BoxDecoration(
@@ -59,7 +61,8 @@ class DetailsView extends StackedView<DetailsViewModel> {
                               ),
                             ),
                             Container(
-                              margin: const EdgeInsets.symmetric(horizontal: 4.0),
+                              margin:
+                                  const EdgeInsets.symmetric(horizontal: 4.0),
                               width: 61,
                               height: 6,
                               decoration: BoxDecoration(
@@ -70,17 +73,17 @@ class DetailsView extends StackedView<DetailsViewModel> {
                           ]),
                     ),
                     Center(
-                      child: Padding(padding: const EdgeInsets.fromLTRB(60.0, 178.0, 60.0, 0.0),
-                      child: Column(
-                        children: [
+                      child: Padding(
+                        padding:
+                            const EdgeInsets.fromLTRB(60.0, 178.0, 60.0, 0.0),
+                        child: Column(children: [
                           for (var item in viewModel.detailsList)
                             DetailsContainer(item: item),
-                        ]
-                      ),),
+                        ]),
+                      ),
                     )
                   ],
                 ),
-
               ],
             ),
           ),

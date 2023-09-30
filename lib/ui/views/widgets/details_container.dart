@@ -11,16 +11,15 @@ class DetailsContainer extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 13.0),
       child: Container(
-        width: 256.0,
-        height: 243.0,
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(30.0),
-        ),
-        child: Image.asset(
-          item.image,
-          fit: BoxFit.cover,
-        )
-        ),
-      );
+          width: 256.0,
+          height: 243.0,
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(30.0),
+          ),
+          child: Image.asset(
+            item.image,
+            fit: BoxFit.cover,
+          )),
+    );
   }
 }
