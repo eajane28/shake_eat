@@ -10,17 +10,11 @@ class AfterShakeViewModel extends BaseViewModel {
   final _navigationService = locator<NavigationService>();
 
   void navigateToShaking() {
-    _navigationService.navigateToThreeView();
-    Timer(const Duration(seconds: 1), () {
-      _navigationService.navigateToTwoView();
-      Timer(const Duration(seconds: 1), () {
-        _navigationService.navigateToOneView();
-        Timer(const Duration(seconds: 1), () {
-          _navigationService.navigateToShakingView();
-          Timer(const Duration(seconds: 3), () {
-            _navigationService.navigateToAfterShakeView();
-          });
-        });
+    _navigationService.navigateToShakeTimerView();
+    Timer(const Duration(seconds: 3), () {
+      _navigationService.navigateToShakingView();
+      Timer(const Duration(seconds: 3), () {
+        _navigationService.navigateToAfterShakeView();
       });
     });
   }

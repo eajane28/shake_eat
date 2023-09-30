@@ -15,8 +15,7 @@ class DetailsViewModel extends BaseViewModel {
       image: 'assets/photo2.png',
     )
   ];
-  void navigateToRedeem(){
+  void navigateToRedeem() {
     _navigationService.navigateToRedeemView();
   }
-
 }

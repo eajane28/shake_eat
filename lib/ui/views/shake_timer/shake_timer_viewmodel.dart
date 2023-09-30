@@ -1,13 +1,13 @@
 import 'package:stacked/stacked.dart';
 import 'dart:async';
 
-class RedeemViewModel extends BaseViewModel {
-  int _timerDuration = 10;
+class ShakeTimerViewModel extends BaseViewModel {
+  int _timerDuration = 3;
   late Timer _timer;
 
   int get timerDuration => _timerDuration;
 
-  RedeemViewModel() {
+  ShakeTimerViewModel() {
     startTimer();
   }
 

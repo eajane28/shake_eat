@@ -39,7 +39,7 @@ class RedeemView extends StatelessWidget {
                             children: [
                               Container(
                                 margin:
-                                const EdgeInsets.symmetric(horizontal: 4.0),
+                                    const EdgeInsets.symmetric(horizontal: 4.0),
                                 width: 61,
                                 height: 6,
                                 decoration: BoxDecoration(
@@ -49,7 +49,7 @@ class RedeemView extends StatelessWidget {
                               ),
                               Container(
                                 margin:
-                                const EdgeInsets.symmetric(horizontal: 4.0),
+                                    const EdgeInsets.symmetric(horizontal: 4.0),
                                 width: 61,
                                 height: 6,
                                 decoration: BoxDecoration(
@@ -59,7 +59,7 @@ class RedeemView extends StatelessWidget {
                               ),
                               Container(
                                 margin:
-                                const EdgeInsets.symmetric(horizontal: 4.0),
+                                    const EdgeInsets.symmetric(horizontal: 4.0),
                                 width: 61,
                                 height: 6,
                                 decoration: BoxDecoration(
@@ -73,7 +73,7 @@ class RedeemView extends StatelessWidget {
 
                       // Add the timer display
                       Padding(
-                        padding: const EdgeInsets.only(top:250.0),
+                        padding: const EdgeInsets.only(top: 250.0),
                         child: Center(
                           child: Text(
                             '${model.timerDuration}',
