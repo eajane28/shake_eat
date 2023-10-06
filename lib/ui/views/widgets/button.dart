@@ -7,10 +7,10 @@ class SelectionButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 9.0),
+      padding: const EdgeInsets.symmetric(vertical: 9.0, horizontal: 20),
       child: Container(
-        height: 30.86,
-        width: 100.89,
+        height: 50,
+        width: double.infinity,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(15.0),
           color: const Color(0xFFFBAB10),
@@ -20,7 +20,7 @@ class SelectionButton extends StatelessWidget {
             title,
             style: const TextStyle(
               fontWeight: FontWeight.w600,
-              fontSize: 15,
+              fontSize: 20,
               color: Color(0xFFDA1D1D),
             ),
           ),

@@ -5,7 +5,6 @@ import 'package:url_launcher/url_launcher.dart';
 
 import 'after_shake_viewmodel.dart';
 
-
 class AfterShakeView extends StackedView<AfterShakeViewModel> {
   const AfterShakeView({Key? key}) : super(key: key);
 
@@ -18,7 +17,7 @@ class AfterShakeView extends StackedView<AfterShakeViewModel> {
     return Scaffold(
       body: SafeArea(
         child: GestureDetector(
-          onTap: null,
+          onTap: viewModel.navigateToDetails,
           child: Column(
             children: [
               Stack(
@@ -39,43 +38,42 @@ class AfterShakeView extends StackedView<AfterShakeViewModel> {
                   Padding(
                     padding: const EdgeInsets.only(top: 65.0),
                     child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children:[
-                        Container(
-                          margin: const EdgeInsets.symmetric(horizontal: 4.0),
-                          width: 61,
-                          height: 6,
-                          decoration: BoxDecoration(
-                            color: const Color(0xFFFBAB10),
-                            borderRadius: BorderRadius.circular(5.0),
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Container(
+                            margin: const EdgeInsets.symmetric(horizontal: 4.0),
+                            width: 61,
+                            height: 6,
+                            decoration: BoxDecoration(
+                              color: const Color(0xFFFBAB10),
+                              borderRadius: BorderRadius.circular(5.0),
+                            ),
                           ),
-                        ),
-                        Container(
-                          margin: const EdgeInsets.symmetric(horizontal: 4.0),
-                          width: 61,
-                          height: 6,
-                          decoration: BoxDecoration(
-                            color: Colors.white,
-                            borderRadius: BorderRadius.circular(5.0),
+                          Container(
+                            margin: const EdgeInsets.symmetric(horizontal: 4.0),
+                            width: 61,
+                            height: 6,
+                            decoration: BoxDecoration(
+                              color: Colors.white,
+                              borderRadius: BorderRadius.circular(5.0),
+                            ),
                           ),
-                        ),
-                        Container(
-                          margin: const EdgeInsets.symmetric(horizontal: 4.0),
-                          width: 61,
-                          height: 6,
-                          decoration: BoxDecoration(
-                            color: Colors.white,
-                            borderRadius: BorderRadius.circular(5.0),
+                          Container(
+                            margin: const EdgeInsets.symmetric(horizontal: 4.0),
+                            width: 61,
+                            height: 6,
+                            decoration: BoxDecoration(
+                              color: Colors.white,
+                              borderRadius: BorderRadius.circular(5.0),
+                            ),
                           ),
-                        ),
-                      ]
-                    ),
+                        ]),
                   ),
                   Padding(
                     padding: const EdgeInsets.only(
                         top: 225.0, left: 50.0, right: 50.0),
-                    child:
-                        Image.asset('assets/paengs.png', height: 289, width: 400),
+                    child: Image.asset('assets/paengs.png',
+                        height: 289, width: 400),
                   )
                 ],
               ),
@@ -113,8 +111,7 @@ class AfterShakeView extends StackedView<AfterShakeViewModel> {
     if (kDebugMode) {
       print("Creating variable for map");
     }
-    Uri map = Uri.https('maps.app.goo.gl', '/$mapId', {
-    });
+    Uri map = Uri.https('maps.app.goo.gl', '/$mapId', {});
     if (kDebugMode) {
       print("Map created");
       print(map);

@@ -21,7 +21,7 @@ class HomeView extends StackedView<HomeViewModel> {
               children: [
                 Image.asset("assets/Shake it - Logo.png"),
                 const Text(
-                  'Choose your preference',
+                  'Choose your meal preference base on the categories:',
                   textAlign: TextAlign.center,
                   style: TextStyle(
                     color: Color(0xFFFBAB10),
