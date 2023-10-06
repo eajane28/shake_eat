@@ -9,11 +9,8 @@ import 'package:food_frenzy/app/app.router.dart';
 import 'package:stacked_services/stacked_services.dart';
 import 'persistent_data.dart';
 
-
-
 // Entry point for the Flutter application
 Future<void> main() async {
-
   // Ensure that Flutter is initialized
   WidgetsFlutterBinding.ensureInitialized();
 
@@ -27,7 +24,6 @@ Future<void> main() async {
   // Setup the UI for bottom sheets
   setupBottomSheetUi();
 
-
   // Run the Flutter application
   runApp(const MainApp());
 }
@@ -36,8 +32,6 @@ Future<void> main() async {
 class MainApp extends StatelessWidget {
   // Constructor for the MainApp widget
   const MainApp({super.key});
-
-
 
   @override
   Widget build(BuildContext context) {

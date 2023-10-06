@@ -5,19 +5,20 @@
 // **************************************************************************
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
-import 'package:flutter/material.dart' as _i11;
+import 'package:flutter/material.dart' as _i12;
 import 'package:flutter/material.dart';
 import 'package:food_frenzy/ui/views/after_shake/after_shake_view.dart' as _i7;
 import 'package:food_frenzy/ui/views/details/details_view.dart' as _i8;
 import 'package:food_frenzy/ui/views/home/home_view.dart' as _i2;
 import 'package:food_frenzy/ui/views/interactive/interactive_view.dart' as _i4;
+import 'package:food_frenzy/ui/views/onboarding/onboarding_view.dart' as _i11;
 import 'package:food_frenzy/ui/views/redeem/redeem_view.dart' as _i9;
 import 'package:food_frenzy/ui/views/shake_timer/shake_timer_view.dart' as _i10;
 import 'package:food_frenzy/ui/views/shaking/shaking_view.dart' as _i5;
 import 'package:food_frenzy/ui/views/share/share_view.dart' as _i6;
 import 'package:food_frenzy/ui/views/startup/startup_view.dart' as _i3;
 import 'package:stacked/stacked.dart' as _i1;
-import 'package:stacked_services/stacked_services.dart' as _i12;
+import 'package:stacked_services/stacked_services.dart' as _i13;
 
 class Routes {
   static const homeView = '/home-view';
@@ -38,6 +39,8 @@ class Routes {
 
   static const shakeTimerView = '/shake-timer-view';
 
+  static const onboardingView = '/onboarding-view';
+
   static const all = <String>{
     homeView,
     startupView,
@@ -48,6 +51,7 @@ class Routes {
     detailsView,
     redeemView,
     shakeTimerView,
+    onboardingView,
   };
 }
 
@@ -93,60 +97,70 @@ class StackedRouter extends _i1.RouterBase {
       Routes.shakeTimerView,
       page: _i10.ShakeTimerView,
     ),
+    _i1.RouteDef(
+      Routes.onboardingView,
+      page: _i11.OnboardingView,
+    ),
   ];
 
   final _pagesMap = <Type, _i1.StackedRouteFactory>{
     _i2.HomeView: (data) {
-      return _i11.MaterialPageRoute<dynamic>(
+      return _i12.MaterialPageRoute<dynamic>(
         builder: (context) => const _i2.HomeView(),
         settings: data,
       );
     },
     _i3.StartupView: (data) {
-      return _i11.MaterialPageRoute<dynamic>(
+      return _i12.MaterialPageRoute<dynamic>(
         builder: (context) => const _i3.StartupView(),
         settings: data,
       );
     },
     _i4.InteractiveView: (data) {
-      return _i11.MaterialPageRoute<dynamic>(
+      return _i12.MaterialPageRoute<dynamic>(
         builder: (context) => const _i4.InteractiveView(),
         settings: data,
       );
     },
     _i5.ShakingView: (data) {
-      return _i11.MaterialPageRoute<dynamic>(
+      return _i12.MaterialPageRoute<dynamic>(
         builder: (context) => const _i5.ShakingView(),
         settings: data,
       );
     },
     _i6.ShareView: (data) {
-      return _i11.MaterialPageRoute<dynamic>(
+      return _i12.MaterialPageRoute<dynamic>(
         builder: (context) => const _i6.ShareView(),
         settings: data,
       );
     },
     _i7.AfterShakeView: (data) {
-      return _i11.MaterialPageRoute<dynamic>(
+      return _i12.MaterialPageRoute<dynamic>(
         builder: (context) => const _i7.AfterShakeView(),
         settings: data,
       );
     },
     _i8.DetailsView: (data) {
-      return _i11.MaterialPageRoute<dynamic>(
+      return _i12.MaterialPageRoute<dynamic>(
         builder: (context) => const _i8.DetailsView(),
         settings: data,
       );
     },
     _i9.RedeemView: (data) {
-      return _i11.MaterialPageRoute<dynamic>(
+      return _i12.MaterialPageRoute<dynamic>(
         builder: (context) => const _i9.RedeemView(),
         settings: data,
       );
     },
     _i10.ShakeTimerView: (data) {
-      return _i11.MaterialPageRoute<dynamic>(
+      return _i12.MaterialPageRoute<dynamic>(
         builder: (context) => const _i10.ShakeTimerView(),
+        settings: data,
+      );
+    },
+    _i11.OnboardingView: (data) {
+      return _i12.MaterialPageRoute<dynamic>(
+        builder: (context) => const _i11.OnboardingView(),
         settings: data,
       );
     },
@@ -159,7 +173,7 @@ class StackedRouter extends _i1.RouterBase {
   Map<Type, _i1.StackedRouteFactory> get pagesMap => _pagesMap;
 }
 
-extension NavigatorStateExtension on _i12.NavigationService {
+extension NavigatorStateExtension on _i13.NavigationService {
   Future<dynamic> navigateToHomeView([
     int? routerId,
     bool preventDuplicates = true,
@@ -286,6 +300,20 @@ extension NavigatorStateExtension on _i12.NavigationService {
         transition: transition);
   }
 
+  Future<dynamic> navigateToOnboardingView([
+    int? routerId,
+    bool preventDuplicates = true,
+    Map<String, String>? parameters,
+    Widget Function(BuildContext, Animation<double>, Animation<double>, Widget)?
+        transition,
+  ]) async {
+    return navigateTo<dynamic>(Routes.onboardingView,
+        id: routerId,
+        preventDuplicates: preventDuplicates,
+        parameters: parameters,
+        transition: transition);
+  }
+
   Future<dynamic> replaceWithHomeView([
     int? routerId,
     bool preventDuplicates = true,
@@ -406,6 +434,20 @@ extension NavigatorStateExtension on _i12.NavigationService {
         transition,
   ]) async {
     return replaceWith<dynamic>(Routes.shakeTimerView,
+        id: routerId,
+        preventDuplicates: preventDuplicates,
+        parameters: parameters,
+        transition: transition);
+  }
+
+  Future<dynamic> replaceWithOnboardingView([
+    int? routerId,
+    bool preventDuplicates = true,
+    Map<String, String>? parameters,
+    Widget Function(BuildContext, Animation<double>, Animation<double>, Widget)?
+        transition,
+  ]) async {
+    return replaceWith<dynamic>(Routes.onboardingView,
         id: routerId,
         preventDuplicates: preventDuplicates,
         parameters: parameters,

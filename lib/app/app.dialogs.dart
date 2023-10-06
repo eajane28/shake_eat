@@ -13,7 +13,10 @@ import 'app.locator.dart';
 import '../ui/dialogs/info_alert/info_alert_dialog.dart';
 
 enum DialogType {
-  infoAlert, PriceDialogUi, DistanceDialogUi, DietDialogUi,
+  infoAlert,
+  PriceDialogUi,
+  DistanceDialogUi,
+  DietDialogUi,
 }
 
 void setupDialogUi() {
@@ -28,7 +31,6 @@ void setupDialogUi() {
         DietDialogUi(request: request, completer: completer),
     DialogType.DistanceDialogUi: (context, request, completer) =>
         DistanceDialogUi(request: request, completer: completer),
-
   };
 
   dialogService.registerCustomDialogBuilders(builders);

@@ -8,10 +8,10 @@ class ShakeTimerView extends StackedView<ShakeTimerViewModel> {
 
   @override
   Widget builder(
-      BuildContext context,
-      ShakeTimerViewModel viewModel,
-      Widget? child,
-      ) {
+    BuildContext context,
+    ShakeTimerViewModel viewModel,
+    Widget? child,
+  ) {
     return Scaffold(
       body: Center(
         child: Text(
@@ -27,7 +27,7 @@ class ShakeTimerView extends StackedView<ShakeTimerViewModel> {
 
   @override
   ShakeTimerViewModel viewModelBuilder(
-      BuildContext context,
-      ) =>
+    BuildContext context,
+  ) =>
       ShakeTimerViewModel();
 }
