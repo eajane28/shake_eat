@@ -7,20 +7,26 @@ import 'package:food_frenzy/app/app.dialogs.dart';
 import 'package:food_frenzy/app/app.locator.dart';
 import 'package:food_frenzy/app/app.router.dart';
 import 'package:stacked_services/stacked_services.dart';
+import 'persistent_data.dart';
+
+
 
 // Entry point for the Flutter application
 Future<void> main() async {
+
   // Ensure that Flutter is initialized
   WidgetsFlutterBinding.ensureInitialized();
 
   // Initialize the service locator (dependency injection)
   await setupLocator();
 
+  PersistentData.geData();
   // Setup the UI for dialogs
   setupDialogUi();
 
   // Setup the UI for bottom sheets
   setupBottomSheetUi();
+
 
   // Run the Flutter application
   runApp(const MainApp());
@@ -30,6 +36,8 @@ Future<void> main() async {
 class MainApp extends StatelessWidget {
   // Constructor for the MainApp widget
   const MainApp({super.key});
+
+
 
   @override
   Widget build(BuildContext context) {

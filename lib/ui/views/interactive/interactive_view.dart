@@ -4,6 +4,8 @@ import 'package:stacked/stacked.dart';
 import '../../common/svg_icons_constants.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
+import 'package:food_frenzy/constants.dart';
+
 import 'interactive_viewmodel.dart';
 
 class InteractiveView extends StackedView<InteractiveViewModel> {
@@ -31,11 +33,7 @@ class InteractiveView extends StackedView<InteractiveViewModel> {
                 children: [
                   GestureDetector(
                     onTap: () {
-                      const String appLink =
-                          "https://github.com/eajane28/shake_eat/releases";
-                      const String message =
-                          "Checkout this awesome app for choosing where to eat randomly!\n$appLink";
-                      Share.share(message);
+                      Share.share(Constant.sharemsg);
                     },
                     child: Column(
                       children: [
