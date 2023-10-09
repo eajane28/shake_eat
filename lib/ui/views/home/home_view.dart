@@ -19,16 +19,31 @@ class HomeView extends StackedView<HomeViewModel> {
           Center(
             child: Column(
               children: [
-                Image.asset("assets/Shake it - Logo.png"),
-                const Text(
-                  'Choose your meal preference base on the categories:',
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                    color: Color(0xFFFBAB10),
-                    fontSize: 20,
-                    fontWeight: FontWeight.w700,
+                Stack(children: [
+                  Center(
+                    child: GestureDetector(
+                        onTap: viewModel.navigateToShaking,
+                        child: SizedBox(
+                          height: 250,
+                          child: Image.asset(
+                            'assets/shake.png',
+                            fit: BoxFit.fitWidth,
+                          ),
+                        )),
                   ),
-                ),
+                  const Padding(
+                    padding: EdgeInsets.only(top:200.0),
+                    child: Text(
+                      'Choose your meal preference base on the categories:',
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        color: Color(0xFFFBAB10),
+                        fontSize: 20,
+                        fontWeight: FontWeight.w700,
+                      ),
+                    ),
+                  ),
+                ]),
                 const SizedBox(height: 9.0),
                 GestureDetector(
                     onTap: viewModel.showPriceRange,
@@ -39,14 +54,6 @@ class HomeView extends StackedView<HomeViewModel> {
                 GestureDetector(
                     onTap: viewModel.showDistanceRange,
                     child: const SelectionButton(title: 'Distance')),
-                Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 10.0),
-                  child: SizedBox(
-                      height: 250,
-                      child: GestureDetector(
-                          onTap: viewModel.navigateToShaking,
-                          child: Image.asset('assets/shake.png'))),
-                )
               ],
             ),
           ),
