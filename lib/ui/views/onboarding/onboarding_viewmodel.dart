@@ -11,9 +11,9 @@ class OnboardingViewModel extends BaseViewModel {
   final _navigationService = locator<NavigationService>();
 
   final onBoardingList= [
-    const OnboardingData(imagePage: 'assets/onboarding1.png', title: '', message: ''),
-    const OnboardingData(imagePage: 'assets/onboarding2.png', title: '', message: ''),
-    const OnboardingData(imagePage: 'assets/onboarding3.png', title: '', message: ''),
+    const OnboardingData(imagePage: 'assets/onboarding1.png', title: '', message: 'Shake your phone to stir up the magic and watch as we reveal your restaurant  pick!'),
+    const OnboardingData(imagePage: 'assets/onboarding2.png', title: '', message: 'Check out the mouth watering menu and grab exclusive vouchers!'),
+    const OnboardingData(imagePage: 'assets/onboarding3.png', title: '', message: 'Find the location to generate your QR code to your exciting vouchers!'),
   ];
   int selectedPosition = 0;
 

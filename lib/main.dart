@@ -7,7 +7,6 @@ import 'package:food_frenzy/app/app.dialogs.dart';
 import 'package:food_frenzy/app/app.locator.dart';
 import 'package:food_frenzy/app/app.router.dart';
 import 'package:stacked_services/stacked_services.dart';
-import 'persistent_data.dart';
 
 // Entry point for the Flutter application
 Future<void> main() async {
@@ -17,7 +16,6 @@ Future<void> main() async {
   // Initialize the service locator (dependency injection)
   await setupLocator();
 
-  PersistentData.geData();
   // Setup the UI for dialogs
   setupDialogUi();
 

@@ -53,10 +53,16 @@ class InteractiveView extends StackedView<InteractiveViewModel> {
                         ),
                         const Text('SHARE',
                             style: TextStyle(
-                                color: Color(0xFFFBAB10),
+                                color: Color(0xFFDA1D1D),
                                 fontWeight: FontWeight.bold)),
                       ],
                     ),
+                  ),
+                  const Text(
+                    'OR',
+                    style: TextStyle(
+                        color: Color(0xFFDA1D1D),
+                        fontWeight: FontWeight.bold),
                   ),
                   GestureDetector(
                     onTap: viewModel.toHomeView,
@@ -79,7 +85,7 @@ class InteractiveView extends StackedView<InteractiveViewModel> {
                       ),
                       const Text('DINE',
                           style: TextStyle(
-                              color: Color(0xFFFBAB10),
+                              color: Color(0xFFDA1D1D),
                               fontWeight: FontWeight.bold)),
                     ]),
                   ),
