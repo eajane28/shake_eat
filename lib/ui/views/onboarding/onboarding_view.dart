@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:food_frenzy/ui/views/widgets/individual_onboarding.dart';
 import 'package:stacked/stacked.dart';
 
+import '../widgets/onboarding_footer.dart';
 import 'onboarding_viewmodel.dart';
 
 class OnboardingView extends StackedView<OnboardingViewModel> {
@@ -13,10 +15,21 @@ class OnboardingView extends StackedView<OnboardingViewModel> {
     Widget? child,
   ) {
     return Scaffold(
-      backgroundColor: Theme.of(context).colorScheme.background,
-      body: Container(
-        padding: const EdgeInsets.only(left: 25.0, right: 25.0),
-      ),
+      body: Column(
+        children: [
+          Expanded(
+            child: PageView(
+                physics: const BouncingScrollPhysics(),
+                controller: viewModel.pageController,
+                onPageChanged: viewModel.onPageChanged,
+                children: viewModel.onBoardingList.map((e) => IndividualOnboarding(data: e,)).toList()),
+          ),
+          OnboardingFooter(
+            itemSize: viewModel.onBoardingList.length,
+            selectedPosition: viewModel.selectedPosition,
+          )
+        ],
+      )
     );
   }
 
