@@ -34,54 +34,107 @@ class RedeemView extends StatelessWidget {
                       ),
                       Padding(
                         padding: const EdgeInsets.only(top: 65.0),
-                        child: Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Container(
-                                margin:
-                                    const EdgeInsets.symmetric(horizontal: 4.0),
-                                width: 61,
-                                height: 6,
-                                decoration: BoxDecoration(
+                        child: Column(
+                          children: [
+                            Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Container(
+                                    margin: const EdgeInsets.symmetric(
+                                        horizontal: 4.0),
+                                    width: 61,
+                                    height: 6,
+                                    decoration: BoxDecoration(
+                                      color: Colors.white,
+                                      borderRadius: BorderRadius.circular(5.0),
+                                    ),
+                                  ),
+                                  Container(
+                                    margin: const EdgeInsets.symmetric(
+                                        horizontal: 4.0),
+                                    width: 61,
+                                    height: 6,
+                                    decoration: BoxDecoration(
+                                      color: Colors.white,
+                                      borderRadius: BorderRadius.circular(5.0),
+                                    ),
+                                  ),
+                                  Container(
+                                    margin: const EdgeInsets.symmetric(
+                                        horizontal: 4.0),
+                                    width: 61,
+                                    height: 6,
+                                    decoration: BoxDecoration(
+                                      color: const Color(0xFFFBAB10),
+                                      borderRadius: BorderRadius.circular(5.0),
+                                    ),
+                                  ),
+                                ]),
+                            const Padding(
+                              padding: EdgeInsets.only(top: 25.0),
+                              child: Text(
+                                'Claim it!',
+                                style: TextStyle(
+                                  fontSize: 36,
                                   color: Colors.white,
-                                  borderRadius: BorderRadius.circular(5.0),
+                                  fontWeight: FontWeight.w700,
                                 ),
                               ),
-                              Container(
-                                margin:
-                                    const EdgeInsets.symmetric(horizontal: 4.0),
-                                width: 61,
-                                height: 6,
-                                decoration: BoxDecoration(
-                                  color: Colors.white,
-                                  borderRadius: BorderRadius.circular(5.0),
-                                ),
-                              ),
-                              Container(
-                                margin:
-                                    const EdgeInsets.symmetric(horizontal: 4.0),
-                                width: 61,
-                                height: 6,
-                                decoration: BoxDecoration(
-                                  color: const Color(0xFFFBAB10),
-                                  borderRadius: BorderRadius.circular(5.0),
-                                ),
-                              ),
-                            ]),
+                            ),
+                          ],
+                        ),
                       ),
                       // ... your existing UI code here ...
 
                       // Add the timer display
                       Padding(
                         padding: const EdgeInsets.only(top: 250.0),
-                        child: Center(
-                          child: Text(
-                            '${model.timerDuration}',
-                            style: const TextStyle(
-                              fontSize: 150,
-                              color: Colors.white,
+                        child: Column(
+                          children: [
+                            Center(
+                              child: Text(
+                                '${model.timerDuration}',
+                                style: const TextStyle(
+                                  fontSize: 150,
+                                  color: Colors.white,
+                                ),
+                              ),
                             ),
-                          ),
+                            const Text(
+                              'seconds to collect',
+                              style: TextStyle(
+                                fontSize: 30,
+                                color: Color(0xFFDA1D1D),
+                                fontWeight: FontWeight.w600,
+                              ),
+                            ),
+                            Center(
+                              child: SizedBox(
+                                height: 300,
+                                child: GestureDetector(
+                                  onTap: model.claimedVoucher,
+                                  child: Image.asset('assets/voucher.png',
+                                      fit: BoxFit.contain),
+                                ),
+                              ),
+                            ),
+                            const SizedBox(height: 70),
+                            Column(
+                              children: [
+                                Image.asset(
+                                  'assets/Vector.png',
+                                ),
+                                const Text(
+                                  'Let\'s eat!',
+                                  style: TextStyle(
+                                    fontSize: 17,
+                                    color: Color(0xFFDA1D1D),
+                                    fontWeight: FontWeight.w500,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ],
                         ),
                       ),
                     ],

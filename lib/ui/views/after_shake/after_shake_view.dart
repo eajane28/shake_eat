@@ -37,37 +37,55 @@ class AfterShakeView extends StackedView<AfterShakeViewModel> {
                   ),
                   Padding(
                     padding: const EdgeInsets.only(top: 65.0),
-                    child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Container(
-                            margin: const EdgeInsets.symmetric(horizontal: 4.0),
-                            width: 61,
-                            height: 6,
-                            decoration: BoxDecoration(
-                              color: const Color(0xFFFBAB10),
-                              borderRadius: BorderRadius.circular(5.0),
-                            ),
-                          ),
-                          Container(
-                            margin: const EdgeInsets.symmetric(horizontal: 4.0),
-                            width: 61,
-                            height: 6,
-                            decoration: BoxDecoration(
+                    child: Column(
+                      children: [
+                        Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Container(
+                                margin:
+                                    const EdgeInsets.symmetric(horizontal: 4.0),
+                                width: 61,
+                                height: 6,
+                                decoration: BoxDecoration(
+                                  color: const Color(0xFFFBAB10),
+                                  borderRadius: BorderRadius.circular(5.0),
+                                ),
+                              ),
+                              Container(
+                                margin:
+                                    const EdgeInsets.symmetric(horizontal: 4.0),
+                                width: 61,
+                                height: 6,
+                                decoration: BoxDecoration(
+                                  color: Colors.white,
+                                  borderRadius: BorderRadius.circular(5.0),
+                                ),
+                              ),
+                              Container(
+                                margin:
+                                    const EdgeInsets.symmetric(horizontal: 4.0),
+                                width: 61,
+                                height: 6,
+                                decoration: BoxDecoration(
+                                  color: Colors.white,
+                                  borderRadius: BorderRadius.circular(5.0),
+                                ),
+                              ),
+                            ]),
+                        const Padding(
+                          padding: EdgeInsets.only(top: 25.0),
+                          child: Text(
+                            'Restaurant',
+                            style: TextStyle(
                               color: Colors.white,
-                              borderRadius: BorderRadius.circular(5.0),
+                              fontSize: 36.0,
+                              fontWeight: FontWeight.w700,
                             ),
                           ),
-                          Container(
-                            margin: const EdgeInsets.symmetric(horizontal: 4.0),
-                            width: 61,
-                            height: 6,
-                            decoration: BoxDecoration(
-                              color: Colors.white,
-                              borderRadius: BorderRadius.circular(5.0),
-                            ),
-                          ),
-                        ]),
+                        ),
+                      ],
+                    ),
                   ),
                   Padding(
                     padding: const EdgeInsets.only(

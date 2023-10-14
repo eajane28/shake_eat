@@ -1,23 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
 
-import '../widgets/details_container.dart';
-import 'details_viewmodel.dart';
+import 'redeem_succes_viewmodel.dart';
 
-class DetailsView extends StackedView<DetailsViewModel> {
-  const DetailsView({Key? key}) : super(key: key);
+class RedeemSuccesView extends StackedView<RedeemSuccesViewModel> {
+  const RedeemSuccesView({Key? key}) : super(key: key);
 
   @override
   Widget builder(
     BuildContext context,
-    DetailsViewModel viewModel,
+    RedeemSuccesViewModel viewModel,
     Widget? child,
   ) {
     return Scaffold(
       body: SafeArea(
-        child: GestureDetector(
-          onTap: viewModel.navigateToRedeem,
-          child: SingleChildScrollView(
+        child: SingleChildScrollView(
+          child: GestureDetector(
+            onTap: null,
             child: Column(
               children: [
                 Stack(
@@ -58,7 +57,7 @@ class DetailsView extends StackedView<DetailsViewModel> {
                                   width: 61,
                                   height: 6,
                                   decoration: BoxDecoration(
-                                    color: const Color(0xFFFBAB10),
+                                    color: Colors.white,
                                     borderRadius: BorderRadius.circular(5.0),
                                   ),
                                 ),
@@ -68,7 +67,7 @@ class DetailsView extends StackedView<DetailsViewModel> {
                                   width: 61,
                                   height: 6,
                                   decoration: BoxDecoration(
-                                    color: Colors.white,
+                                    color: const Color(0xFFFBAB10),
                                     borderRadius: BorderRadius.circular(5.0),
                                   ),
                                 ),
@@ -76,10 +75,10 @@ class DetailsView extends StackedView<DetailsViewModel> {
                           const Padding(
                             padding: EdgeInsets.only(top: 25.0),
                             child: Text(
-                              'Menu',
+                              'Claimed!',
                               style: TextStyle(
+                                fontSize: 36,
                                 color: Colors.white,
-                                fontSize: 36.0,
                                 fontWeight: FontWeight.w700,
                               ),
                             ),
@@ -87,16 +86,46 @@ class DetailsView extends StackedView<DetailsViewModel> {
                         ],
                       ),
                     ),
-                    Center(
-                      child: Padding(
-                        padding:
-                            const EdgeInsets.fromLTRB(60.0, 178.0, 60.0, 0.0),
-                        child: Column(children: [
-                          for (var item in viewModel.detailsList)
-                            DetailsContainer(item: item),
-                        ]),
+                    Padding(
+                      padding: const EdgeInsets.only(top: 250.0),
+                      child: Column(
+                        children: [
+                          const Center(
+                            child: Text(
+                              'CONGRATULATIONS!',
+                              style: TextStyle(
+                                fontSize: 40,
+                                color: Colors.white,
+                              ),
+                            ),
+                          ),
+                          const SizedBox(height: 165),
+                          Center(
+                            child: SizedBox(
+                              height: 300,
+                              child: Image.asset('assets/collected.png',
+                                  fit: BoxFit.contain),
+                            ),
+                          ),
+                          const SizedBox(height: 70),
+                          Column(
+                            children: [
+                              Image.asset(
+                                'assets/Vector.png',
+                              ),
+                              const Text(
+                                'Let\'s eat!',
+                                style: TextStyle(
+                                  fontSize: 17,
+                                  color: Color(0xFFDA1D1D),
+                                  fontWeight: FontWeight.w500,
+                                ),
+                              ),
+                            ],
+                          ),
+                        ],
                       ),
-                    )
+                    ),
                   ],
                 ),
               ],
@@ -108,8 +137,8 @@ class DetailsView extends StackedView<DetailsViewModel> {
   }
 
   @override
-  DetailsViewModel viewModelBuilder(
+  RedeemSuccesViewModel viewModelBuilder(
     BuildContext context,
   ) =>
-      DetailsViewModel();
+      RedeemSuccesViewModel();
 }

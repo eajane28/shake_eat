@@ -61,8 +61,7 @@ class InteractiveView extends StackedView<InteractiveViewModel> {
                   const Text(
                     'OR',
                     style: TextStyle(
-                        color: Color(0xFFDA1D1D),
-                        fontWeight: FontWeight.bold),
+                        color: Color(0xFFDA1D1D), fontWeight: FontWeight.bold),
                   ),
                   GestureDetector(
                     onTap: viewModel.toHomeView,

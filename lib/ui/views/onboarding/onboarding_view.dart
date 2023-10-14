@@ -15,22 +15,25 @@ class OnboardingView extends StackedView<OnboardingViewModel> {
     Widget? child,
   ) {
     return Scaffold(
-      body: Column(
-        children: [
-          Expanded(
-            child: PageView(
-                physics: const BouncingScrollPhysics(),
-                controller: viewModel.pageController,
-                onPageChanged: viewModel.onPageChanged,
-                children: viewModel.onBoardingList.map((e) => IndividualOnboarding(data: e,)).toList()),
-          ),
-          OnboardingFooter(
-            itemSize: viewModel.onBoardingList.length,
-            selectedPosition: viewModel.selectedPosition,
-          )
-        ],
-      )
-    );
+        body: Column(
+      children: [
+        Expanded(
+          child: PageView(
+              physics: const BouncingScrollPhysics(),
+              controller: viewModel.pageController,
+              onPageChanged: viewModel.onPageChanged,
+              children: viewModel.onBoardingList
+                  .map((e) => IndividualOnboarding(
+                        data: e,
+                      ))
+                  .toList()),
+        ),
+        OnboardingFooter(
+          itemSize: viewModel.onBoardingList.length,
+          selectedPosition: viewModel.selectedPosition,
+        )
+      ],
+    ));
   }
 
   @override

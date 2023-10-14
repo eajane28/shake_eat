@@ -32,7 +32,7 @@ class HomeView extends StackedView<HomeViewModel> {
                         )),
                   ),
                   const Padding(
-                    padding: EdgeInsets.only(top:200.0),
+                    padding: EdgeInsets.only(top: 200.0),
                     child: Text(
                       'Choose your meal preference base on the categories:',
                       textAlign: TextAlign.center,

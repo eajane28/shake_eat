@@ -12,6 +12,7 @@ import 'package:food_frenzy/ui/views/details/details_view.dart';
 import 'package:food_frenzy/ui/views/redeem/redeem_view.dart';
 import 'package:food_frenzy/ui/views/shake_timer/shake_timer_view.dart';
 import 'package:food_frenzy/ui/views/onboarding/onboarding_view.dart';
+import 'package:food_frenzy/ui/views/redeem_succes/redeem_succes_view.dart';
 // @stacked-import
 
 @StackedApp(
@@ -27,6 +28,7 @@ import 'package:food_frenzy/ui/views/onboarding/onboarding_view.dart';
     MaterialRoute(page: RedeemView),
     MaterialRoute(page: ShakeTimerView),
     MaterialRoute(page: OnboardingView),
+    MaterialRoute(page: RedeemSuccesView),
 // @stacked-route
   ],
   dependencies: [

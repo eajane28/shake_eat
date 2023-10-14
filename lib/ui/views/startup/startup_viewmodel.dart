@@ -14,7 +14,7 @@ class StartupViewModel extends BaseViewModel {
     if (isFirstLaunch == null) {
       _navigationService.replaceWithOnboardingView();
       await prefs.setBool('isFirstLaunch', false); // set first launch to false
-    }else {
+    } else {
       _navigationService.replaceWithInteractiveView();
       //showToastMessage("Not first launch");
     }

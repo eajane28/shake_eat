@@ -1,7 +1,12 @@
+import 'package:food_frenzy/app/app.router.dart';
 import 'package:stacked/stacked.dart';
+import 'package:stacked_services/stacked_services.dart';
 import 'dart:async';
 
+import '../../../app/app.locator.dart';
+
 class RedeemViewModel extends BaseViewModel {
+  final _navigationService = locator<NavigationService>();
   int _timerDuration = 10;
   late Timer _timer;
 
@@ -20,6 +25,10 @@ class RedeemViewModel extends BaseViewModel {
         _timer.cancel();
       }
     });
+  }
+
+  void claimedVoucher() {
+    _navigationService.navigateToRedeemSuccesView();
   }
 
   @override
