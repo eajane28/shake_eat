@@ -3,13 +3,17 @@ The app that turns "Asa Ta Kaon" into a delightful dining experience
 
 ## To-Do
 ### front-end
-- [ ] App icon and name
+- [x] App icon and name
 - [ ] Map
+- [ ] Dark mode
 
 ### back-end
-- [ ] Setup persistent data storage
+- [x] Setup persistent data storage
+- [x] Variable to for check if first launch
+- [ ] Save preference to persistent
 - [ ] Firebase API request
-- [ ] Variable to for check if first launch
+- [ ] Save database locally
+- [ ] Determine distance between two coordinates
 
 ### Data collection
 - [ ] Restaurant data
