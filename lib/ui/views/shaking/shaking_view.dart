@@ -1,33 +1,38 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:food_frenzy/app/app.router.dart';
 import 'package:stacked/stacked.dart';
+import 'package:shake/shake.dart';
+import 'package:stacked_services/stacked_services.dart';
 
-import 'shaking_viewmodel.dart';
+import '../../../app/app.locator.dart';
 
-class ShakingView extends StackedView<ShakingViewModel> {
+class ShakingView extends StatelessWidget {
   const ShakingView({Key? key}) : super(key: key);
 
   @override
-  Widget builder(
-    BuildContext context,
-    ShakingViewModel viewModel,
-    Widget? child,
-  ) {
-    return const Scaffold(
-      body: Center(
-        child: ShakeAnimationWidget(), // Use the ShakeAnimationWidget
-      ),
+  Widget build(BuildContext context) {
+    return ViewModelBuilder<ShakingViewModel>.reactive(
+      viewModelBuilder: () => ShakingViewModel(),
+      builder: (context, viewModel, child) {
+        return Scaffold(
+          body: Center(
+            child: Stack(
+              alignment: Alignment.center,
+              children: [
+                if (!viewModel.isShaking) Image.asset('assets/Shake1.png'),
+                if (viewModel.isShaking) const ShakeAnimationWidget(),
+              ],
+            ),
+          ),
+        );
+      },
     );
   }
-
-  @override
-  ShakingViewModel viewModelBuilder(
-    BuildContext context,
-  ) =>
-      ShakingViewModel();
 }
 
 class ShakeAnimationWidget extends StatefulWidget {
-  const ShakeAnimationWidget({super.key});
+  const ShakeAnimationWidget({Key? key}) : super(key: key);
 
   @override
   _ShakeAnimationWidgetState createState() => _ShakeAnimationWidgetState();
@@ -42,13 +47,11 @@ class _ShakeAnimationWidgetState extends State<ShakeAnimationWidget>
   void initState() {
     super.initState();
 
-    // Create an AnimationController
     _controller = AnimationController(
       vsync: this,
       duration: const Duration(milliseconds: 100),
     );
 
-    // Create a Tween to define the shake animation
     _animation = Tween<double>(
       begin: -5.0,
       end: 5.0,
@@ -57,11 +60,11 @@ class _ShakeAnimationWidgetState extends State<ShakeAnimationWidget>
       curve: Curves.easeInOut,
     ));
 
-    // Start the animation
     _controller.repeat(reverse: true);
   }
 
   @override
+
   Widget build(BuildContext context) {
     return AnimatedBuilder(
       animation: _animation,
@@ -77,6 +80,40 @@ class _ShakeAnimationWidgetState extends State<ShakeAnimationWidget>
   @override
   void dispose() {
     _controller.dispose();
+    super.dispose();
+  }
+}
+
+class ShakingViewModel extends BaseViewModel {
+  final _navigationService = locator<NavigationService>();
+  late ShakeDetector _detector;
+  bool _isShaking = false;
+  int _shakeCount = 0; // Initialize a variable to count shakes
+
+  bool get isShaking => _isShaking;
+  int get shakeCount => _shakeCount; // Getter for shake count
+
+  ShakingViewModel() {
+    _detector = ShakeDetector.autoStart(
+      onPhoneShake: () {
+        _isShaking = true;
+        _shakeCount++; // Increment shake count
+        if (kDebugMode) {
+          print("Shaking. Shake Count: $_shakeCount"); // Print the shake count
+        }
+        if(shakeCount > 3){
+          _navigationService.navigateToAfterShakeView();
+          _detector.stopListening();
+          _shakeCount = 0;
+        }
+        notifyListeners();
+      },
+    );
+  }
+
+  @override
+  void dispose() {
+    _detector.stopListening();
     super.dispose();
   }
 }
