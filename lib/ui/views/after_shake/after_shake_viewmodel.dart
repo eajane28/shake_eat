@@ -9,6 +9,11 @@ import '../../../app/app.locator.dart';
 class AfterShakeViewModel extends BaseViewModel {
   final _navigationService = locator<NavigationService>();
 
+  Future<bool> backPress() async {
+    _navigationService.navigateToHomeView();
+    return false;
+  }
+
   void navigateToShaking() {
     _navigationService.navigateToShakeTimerView();
     Timer(const Duration(seconds: 3), () {

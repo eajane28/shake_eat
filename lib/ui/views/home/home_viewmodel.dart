@@ -6,10 +6,15 @@ import 'package:food_frenzy/app/app.router.dart';
 import 'package:stacked/stacked.dart';
 import 'package:stacked_services/stacked_services.dart';
 
+
 class HomeViewModel extends BaseViewModel {
   final _dialogService = locator<DialogService>();
   final _navigationService = locator<NavigationService>();
 
+  Future<bool> backPress() async {
+    _navigationService.navigateToInteractiveView();
+    return false;
+  }
   void showPriceRange() async {
     await _dialogService.showCustomDialog(
       title: "Select price range",
