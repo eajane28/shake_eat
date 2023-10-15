@@ -35,7 +35,7 @@ class MainApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       // Specify the initial route for the application
-      initialRoute: Routes.startupView,
+      initialRoute: Routes.interactiveView,
 
       // Define a callback to generate routes using StackedRouter
       onGenerateRoute: StackedRouter().onGenerateRoute,
