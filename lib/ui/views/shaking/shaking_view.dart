@@ -64,7 +64,6 @@ class _ShakeAnimationWidgetState extends State<ShakeAnimationWidget>
   }
 
   @override
-
   Widget build(BuildContext context) {
     return AnimatedBuilder(
       animation: _animation,
@@ -101,7 +100,7 @@ class ShakingViewModel extends BaseViewModel {
         if (kDebugMode) {
           print("Shaking. Shake Count: $_shakeCount"); // Print the shake count
         }
-        if(shakeCount > 3){
+        if (shakeCount > 3) {
           _navigationService.navigateToAfterShakeView();
           _detector.stopListening();
           _shakeCount = 0;
