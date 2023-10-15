@@ -118,22 +118,6 @@ class RedeemView extends StatelessWidget {
                                 ),
                               ),
                             ),
-                            const SizedBox(height: 70),
-                            Column(
-                              children: [
-                                Image.asset(
-                                  'assets/Vector.png',
-                                ),
-                                const Text(
-                                  'Let\'s eat!',
-                                  style: TextStyle(
-                                    fontSize: 17,
-                                    color: Color(0xFFDA1D1D),
-                                    fontWeight: FontWeight.w500,
-                                  ),
-                                ),
-                              ],
-                            ),
                           ],
                         ),
                       ),
