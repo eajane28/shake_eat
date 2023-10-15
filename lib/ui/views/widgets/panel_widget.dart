@@ -6,26 +6,26 @@ class PanelWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => ListView(
-    padding: const EdgeInsets.symmetric(horizontal: 22.0),
-    controller: controller,
-    children: [
-      Column(
+        padding: const EdgeInsets.symmetric(horizontal: 22.0),
+        controller: controller,
         children: [
-          Image.asset(
-            'assets/Vector.png',
+          Column(
+            children: [
+              Image.asset(
+                'assets/Vector.png',
+              ),
+              const Text(
+                'Let\'s eat!',
+                style: TextStyle(
+                  fontSize: 17,
+                  color: Color(0xFFDA1D1D),
+                  fontWeight: FontWeight.w500,
+                ),
+              ),
+            ],
           ),
-          const Text(
-            'Let\'s eat!',
-            style: TextStyle(
-              fontSize: 17,
-              color: Color(0xFFDA1D1D),
-              fontWeight: FontWeight.w500,
-            ),
-          ),
+          //TO DO: Add the map API
+          Image.asset('assets/Maps.png'),
         ],
-      ),
-      //TO DO: Add the map API
-      Image.asset('assets/Maps.png'),
-    ],
-  );
+      );
 }

@@ -3,19 +3,18 @@ import 'package:sliding_up_panel/sliding_up_panel.dart';
 import 'package:stacked/stacked.dart';
 
 import '../widgets/panel_widget.dart';
-import 'redeem_succes_viewmodel.dart';
+import 'no_vouchers_viewmodel.dart';
 
-class RedeemSuccesView extends StackedView<RedeemSuccesViewModel> {
-  const RedeemSuccesView({Key? key}) : super(key: key);
+class NoVouchersView extends StackedView<NoVouchersViewModel> {
+  const NoVouchersView({Key? key}) : super(key: key);
 
   @override
   Widget builder(
     BuildContext context,
-    RedeemSuccesViewModel viewModel,
+    NoVouchersViewModel viewModel,
     Widget? child,
   ) {
     final panelHeightClosed = MediaQuery.of(context).size.height * .05;
-
     return Scaffold(
       body: SlidingUpPanel(
         minHeight: panelHeightClosed,
@@ -83,7 +82,7 @@ class RedeemSuccesView extends StackedView<RedeemSuccesViewModel> {
                             const Padding(
                               padding: EdgeInsets.only(top: 25.0),
                               child: Text(
-                                'Claimed!',
+                                'Sorry!',
                                 style: TextStyle(
                                   fontSize: 36,
                                   color: Colors.white,
@@ -94,28 +93,32 @@ class RedeemSuccesView extends StackedView<RedeemSuccesViewModel> {
                           ],
                         ),
                       ),
-                      Padding(
-                        padding: const EdgeInsets.only(top: 250.0),
+                      // ... your existing UI code here ...
+
+                      // Add the timer display
+                      const Padding(
+                        padding: EdgeInsets.only(top: 345.0),
                         child: Column(
                           children: [
-                            const Center(
+                            Center(
                               child: Text(
-                                'CONGRATULATIONS!',
+                                '😭',
                                 style: TextStyle(
-                                  fontSize: 40,
-                                  color: Colors.white,
+                                  fontSize: 150,
                                 ),
                               ),
                             ),
-                            const SizedBox(height: 165),
-                            Center(
-                              child: SizedBox(
-                                height: 300,
-                                child: Image.asset('assets/collected.png',
-                                    fit: BoxFit.contain),
+                            Padding(
+                              padding: EdgeInsets.only(top: 80.0),
+                              child: Text(
+                                'No Vouchers Available',
+                                style: TextStyle(
+                                  fontSize: 30,
+                                  color: Color(0xFFDA1D1D),
+                                  fontWeight: FontWeight.w600,
+                                ),
                               ),
                             ),
-                            const SizedBox(height: 70),
                           ],
                         ),
                       ),
@@ -138,8 +141,8 @@ class RedeemSuccesView extends StackedView<RedeemSuccesViewModel> {
   }
 
   @override
-  RedeemSuccesViewModel viewModelBuilder(
+  NoVouchersViewModel viewModelBuilder(
     BuildContext context,
   ) =>
-      RedeemSuccesViewModel();
+      NoVouchersViewModel();
 }

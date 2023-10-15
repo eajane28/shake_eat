@@ -45,8 +45,8 @@ class AfterShakeView extends StackedView<AfterShakeViewModel> {
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
                                 Container(
-                                  margin:
-                                      const EdgeInsets.symmetric(horizontal: 4.0),
+                                  margin: const EdgeInsets.symmetric(
+                                      horizontal: 4.0),
                                   width: 61,
                                   height: 6,
                                   decoration: BoxDecoration(
@@ -55,8 +55,8 @@ class AfterShakeView extends StackedView<AfterShakeViewModel> {
                                   ),
                                 ),
                                 Container(
-                                  margin:
-                                      const EdgeInsets.symmetric(horizontal: 4.0),
+                                  margin: const EdgeInsets.symmetric(
+                                      horizontal: 4.0),
                                   width: 61,
                                   height: 6,
                                   decoration: BoxDecoration(
@@ -65,8 +65,8 @@ class AfterShakeView extends StackedView<AfterShakeViewModel> {
                                   ),
                                 ),
                                 Container(
-                                  margin:
-                                      const EdgeInsets.symmetric(horizontal: 4.0),
+                                  margin: const EdgeInsets.symmetric(
+                                      horizontal: 4.0),
                                   width: 61,
                                   height: 6,
                                   decoration: BoxDecoration(

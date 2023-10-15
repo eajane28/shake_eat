@@ -18,8 +18,8 @@ class InteractiveView extends StackedView<InteractiveViewModel> {
     Widget? child,
   ) {
     return WillPopScope(
-        onWillPop: () => viewModel.backPress(),
-        child: Scaffold(
+      onWillPop: () => viewModel.backPress(),
+      child: Scaffold(
         body: Center(
           child: Column(
             mainAxisSize: MainAxisSize.min,
@@ -63,7 +63,8 @@ class InteractiveView extends StackedView<InteractiveViewModel> {
                     const Text(
                       'OR',
                       style: TextStyle(
-                          color: Color(0xFFDA1D1D), fontWeight: FontWeight.bold),
+                          color: Color(0xFFDA1D1D),
+                          fontWeight: FontWeight.bold),
                     ),
                     GestureDetector(
                       onTap: viewModel.toHomeView,
