@@ -7,15 +7,14 @@ class HomeView extends StackedView<HomeViewModel> {
   const HomeView({Key? key}) : super(key: key);
 
   @override
-
   Widget builder(
     BuildContext context,
     HomeViewModel viewModel,
     Widget? child,
   ) {
     return WillPopScope(
-        onWillPop: () => viewModel.backPress(),
-        child: Scaffold(
+      onWillPop: () => viewModel.backPress(),
+      child: Scaffold(
         body: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [

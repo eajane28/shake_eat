@@ -6,7 +6,6 @@ import '../../../app/app.locator.dart';
 import '../../../model/details_data.dart';
 
 class DetailsViewModel extends BaseViewModel {
-
   final _navigationService = locator<NavigationService>();
   List detailsList = [
     const DetailsData(
