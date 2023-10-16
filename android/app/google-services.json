@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "295226228787",
+    "project_id": "shake-eat-app",
+    "storage_bucket": "shake-eat-app.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:295226228787:android:669d27d28cb17396eae346",
+        "android_client_info": {
+          "package_name": "com.example.food_frenzy"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBrBXMBnZ2Ti_Wg3Tx3XfzuPJy1CG_hJzs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

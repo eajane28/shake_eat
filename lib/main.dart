@@ -7,11 +7,17 @@ import 'package:food_frenzy/app/app.dialogs.dart';
 import 'package:food_frenzy/app/app.locator.dart';
 import 'package:food_frenzy/app/app.router.dart';
 import 'package:stacked_services/stacked_services.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'firebase_options.dart';
 
 // Entry point for the Flutter application
 Future<void> main() async {
   // Ensure that Flutter is initialized
   WidgetsFlutterBinding.ensureInitialized();
+
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
 
   // Initialize the service locator (dependency injection)
   await setupLocator();
