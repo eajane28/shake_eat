@@ -96,19 +96,14 @@ class NoVouchersView extends StackedView<NoVouchersViewModel> {
                       // ... your existing UI code here ...
 
                       // Add the timer display
-                      const Padding(
-                        padding: EdgeInsets.only(top: 345.0),
+                      Padding(
+                        padding: const EdgeInsets.only(top: 345.0),
                         child: Column(
                           children: [
                             Center(
-                              child: Text(
-                                '😭',
-                                style: TextStyle(
-                                  fontSize: 150,
-                                ),
-                              ),
+                              child: Image.asset('assets/emoji.png')
                             ),
-                            Padding(
+                            const Padding(
                               padding: EdgeInsets.only(top: 80.0),
                               child: Text(
                                 'No Vouchers Available',
