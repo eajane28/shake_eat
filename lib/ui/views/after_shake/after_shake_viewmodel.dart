@@ -1,14 +1,32 @@
 import 'dart:async';
+import 'dart:math';
 
+import 'package:flutter/foundation.dart';
 import 'package:food_frenzy/app/app.router.dart';
 import 'package:stacked/stacked.dart';
 import 'package:stacked_services/stacked_services.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import '../../../app/app.locator.dart';
 
 class AfterShakeViewModel extends BaseViewModel {
   final _navigationService = locator<NavigationService>();
+  final List<Map<String, String>> restaurantOptions = [
+    {'name': 'MCDonald', 'imagePath': 'assets/paengs.png'},
+    {'name': 'Jollibee', 'imagePath': 'assets/paengs.png'},
+    {'name': 'Chowking', 'imagePath': 'assets/paengs.png'},
+    {'name': 'Pizza Hut', 'imagePath': 'assets/paengs.png'},
+    {'name': 'KFC', 'imagePath': 'assets/paengs.png'},
+    {'name': 'Subway', 'imagePath': 'assets/paengs.png'},
+    {'name': 'Burger King', 'imagePath': 'assets/paengs.png'},
+  ];
+  
+  Map<String, String> getRandomRestaurant() {
+    final random = Random();
+    return restaurantOptions[random.nextInt(restaurantOptions.length)];
+  }
 
+  // back button behaviour
   Future<bool> backPress() async {
     _navigationService.navigateToHomeView();
     return false;
@@ -27,4 +45,27 @@ class AfterShakeViewModel extends BaseViewModel {
   void navigateToDetails() {
     _navigationService.navigateToDetailsView();
   }
+
+  void openMapWithDirections(String mapId) async {
+    if (kDebugMode) {
+      print("Creating variable for map");
+    }
+    Uri map = Uri.https('maps.app.goo.gl', '/$mapId', {});
+    if (kDebugMode) {
+      print("Map created");
+      print(map);
+      print("Launching map");
+    }
+    launchUrl(map);
+    // if (await canLaunchUrl(map)) {
+    //   await launchUrl(map);
+    // } else {
+    //   throw 'Could not launch';
+    // }
+  }
+
+
+
+
+
 }

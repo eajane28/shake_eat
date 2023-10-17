@@ -161,7 +161,7 @@ class StackedRouter extends _i1.RouterBase {
     },
     _i7.AfterShakeView: (data) {
       return _i15.MaterialPageRoute<dynamic>(
-        builder: (context) => const _i7.AfterShakeView(),
+        builder: (context) => _i7.AfterShakeView(),
         settings: data,
       );
     },

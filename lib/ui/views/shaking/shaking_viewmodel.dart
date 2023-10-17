@@ -14,6 +14,7 @@ class ShakingViewModel extends BaseViewModel {
   final _navigationService = locator<NavigationService>();
   late ShakeDetector _detector;
   bool _isShaking = false;
+  int _maxShake = 3;
   int _shakeCount = 0; // Initialize a variable to count shakes
 
   bool get isShaking => _isShaking;
@@ -24,21 +25,23 @@ class ShakingViewModel extends BaseViewModel {
     return false;
   }
   ShakingViewModel() {
-    _detector = ShakeDetector.autoStart(
-      onPhoneShake: () {
-        _isShaking = true;
-        _shakeCount++; // Increment shake count
-        if (kDebugMode) {
-          print("Shaking. Shake Count: $_shakeCount"); // Print the shake count
-        }
-        if (shakeCount > 3) {
-          _navigationService.navigateToAfterShakeView();
-          _detector.stopListening();
-          _shakeCount = 0;
-        }
-        notifyListeners();
-      },
-    );
+      _detector = ShakeDetector.autoStart(
+        onPhoneShake: () {
+          _isShaking = true;
+          _shakeCount++; // Increment shake count
+          if (kDebugMode) {
+            print(
+                "Shaking. ShakeCount: $_shakeCount, MaxShake: $_maxShake"); // Print the shake count
+          }
+          if (shakeCount > _maxShake) {
+            _navigationService.navigateToAfterShakeView();
+            _detector.stopListening();
+            _shakeCount = 0;
+          }
+
+        },
+      );
+    notifyListeners();
   }
 
   @override

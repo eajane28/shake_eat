@@ -1,8 +1,5 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
-import 'package:url_launcher/url_launcher.dart';
-
 import 'after_shake_viewmodel.dart';
 
 class AfterShakeView extends StackedView<AfterShakeViewModel> {
@@ -10,10 +7,14 @@ class AfterShakeView extends StackedView<AfterShakeViewModel> {
 
   @override
   Widget builder(
-    BuildContext context,
-    AfterShakeViewModel viewModel,
-    Widget? child,
-  ) {
+      BuildContext context,
+      AfterShakeViewModel viewModel,
+      Widget? child,
+      ) {
+    final randomRestaurant = viewModel.getRandomRestaurant();
+    final restaurantName = randomRestaurant['name'];
+    final imagePath = randomRestaurant['imagePath'];
+
     return WillPopScope(
       onWillPop: () => viewModel.backPress(),
       child: Scaffold(
@@ -75,11 +76,11 @@ class AfterShakeView extends StackedView<AfterShakeViewModel> {
                                   ),
                                 ),
                               ]),
-                          const Padding(
-                            padding: EdgeInsets.only(top: 25.0),
+                          Padding(
+                            padding: const EdgeInsets.only(top: 25.0),
                             child: Text(
-                              'Restaurant',
-                              style: TextStyle(
+                              restaurantName!,
+                              style: const TextStyle(
                                 color: Colors.white,
                                 fontSize: 36.0,
                                 fontWeight: FontWeight.w700,
@@ -92,8 +93,11 @@ class AfterShakeView extends StackedView<AfterShakeViewModel> {
                     Padding(
                       padding: const EdgeInsets.only(
                           top: 225.0, left: 50.0, right: 50.0),
-                      child: Image.asset('assets/paengs.png',
-                          height: 289, width: 400),
+                      child: Image.asset(
+                        imagePath!,
+                        height: 289,
+                        width: 400,
+                      ),
                     )
                   ],
                 ),
@@ -110,7 +114,7 @@ class AfterShakeView extends StackedView<AfterShakeViewModel> {
                         ),
                         child: const Center(
                           child: Text(
-                            'Reshake',
+                            'Shake again',
                             style: TextStyle(
                               color: Colors.white,
                               fontSize: 20.0,
@@ -126,24 +130,6 @@ class AfterShakeView extends StackedView<AfterShakeViewModel> {
         ),
       ),
     );
-  }
-
-  void openMapWithDirections(String mapId) async {
-    if (kDebugMode) {
-      print("Creating variable for map");
-    }
-    Uri map = Uri.https('maps.app.goo.gl', '/$mapId', {});
-    if (kDebugMode) {
-      print("Map created");
-      print(map);
-      print("Launching map");
-    }
-    launchUrl(map);
-    // if (await canLaunchUrl(map)) {
-    //   await launchUrl(map);
-    // } else {
-    //   throw 'Could not launch';
-    // }
   }
 
   @override
