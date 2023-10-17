@@ -29,14 +29,11 @@ class ShakingViewModel extends BaseViewModel {
         onPhoneShake: () {
           _isShaking = true;
           _shakeCount++; // Increment shake count
-          if (kDebugMode) {
-            print(
-                "Shaking. ShakeCount: $_shakeCount, MaxShake: $_maxShake"); // Print the shake count
-          }
+          if (kDebugMode) print("Shaking. ShakeCount: $_shakeCount, MaxShake: $_maxShake"); // Print the shake count
           if (shakeCount > _maxShake) {
-            _navigationService.navigateToAfterShakeView();
             _detector.stopListening();
             _shakeCount = 0;
+            _navigationService.navigateToAfterShakeView();
           }
 
         },

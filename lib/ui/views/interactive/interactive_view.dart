@@ -25,7 +25,7 @@ class InteractiveView extends StackedView<InteractiveViewModel> {
             mainAxisSize: MainAxisSize.min,
             children: [
               Center(
-                child: Image.asset('assets/Shake it - Logo.png',
+                child: Image.asset('assets/icon/shake_it.png',
                     height: 250, width: 250),
               ),
               Padding(

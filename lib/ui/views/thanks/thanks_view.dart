@@ -50,7 +50,7 @@ class ThanksView extends StackedView<ThanksViewModel> {
                           Center(
                             child: SizedBox(
                               height: 200,
-                              child: Image.asset('assets/Phone logo.png',
+                              child: Image.asset('assets/phone.png',
                                   fit: BoxFit.contain),
                             ),
                           ),

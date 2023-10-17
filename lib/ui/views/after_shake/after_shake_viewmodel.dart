@@ -12,15 +12,15 @@ import '../../../app/app.locator.dart';
 class AfterShakeViewModel extends BaseViewModel {
   final _navigationService = locator<NavigationService>();
   final List<Map<String, String>> restaurantOptions = [
-    {'name': 'MCDonald', 'imagePath': 'assets/paengs.png'},
-    {'name': 'Jollibee', 'imagePath': 'assets/paengs.png'},
-    {'name': 'Chowking', 'imagePath': 'assets/paengs.png'},
-    {'name': 'Pizza Hut', 'imagePath': 'assets/paengs.png'},
-    {'name': 'KFC', 'imagePath': 'assets/paengs.png'},
-    {'name': 'Subway', 'imagePath': 'assets/paengs.png'},
-    {'name': 'Burger King', 'imagePath': 'assets/paengs.png'},
+    {'name': 'MCDonald', 'imagePath': 'assets/restaurant/logo/paengs.png'},
+    {'name': 'Jollibee', 'imagePath': 'assets/restaurant/logo/paengs.png'},
+    {'name': 'Chowking', 'imagePath': 'assets/restaurant/logo/paengs.png'},
+    {'name': 'Pizza Hut', 'imagePath': 'assets/restaurant/logo/paengs.png'},
+    {'name': 'KFC', 'imagePath': 'assets/restaurant/logo/paengs.png'},
+    {'name': 'Subway', 'imagePath': 'assets/restaurant/logo/paengs.png'},
+    {'name': 'Burger King', 'imagePath': 'assets/restaurant/logo/paengs.png'},
   ];
-  
+
   Map<String, String> getRandomRestaurant() {
     final random = Random();
     return restaurantOptions[random.nextInt(restaurantOptions.length)];

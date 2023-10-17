@@ -12,17 +12,17 @@ class OnboardingViewModel extends BaseViewModel {
 
   final onBoardingList = [
     const OnboardingData(
-        imagePage: 'assets/onboarding1.png',
+        imagePage: 'assets/icon/onboarding/1.png',
         title: '',
         message:
             'Shake your phone to stir up the magic and watch as we reveal your restaurant  pick!'),
     const OnboardingData(
-        imagePage: 'assets/onboarding2.png',
+        imagePage: 'assets/icon/onboarding/2.png',
         title: '',
         message:
             'Check out the mouth watering menu and grab exclusive vouchers!'),
     const OnboardingData(
-        imagePage: 'assets/onboarding3.png',
+        imagePage: 'assets/icon/onboarding/3.png',
         title: '',
         message:
             'Find the location to generate your QR code to your exciting vouchers!'),

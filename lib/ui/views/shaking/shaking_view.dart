@@ -1,4 +1,3 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
 import 'shaking_viewmodel.dart';
@@ -19,7 +18,7 @@ class ShakingView extends StatelessWidget {
             child: Stack(
               alignment: Alignment.center,
               children: [
-                if (!viewModel.isShaking) Image.asset('assets/Shake1.png'),
+                if (!viewModel.isShaking) Image.asset('assets/icon/shaking.png'),
                 if (viewModel.isShaking) const ShakeAnimationWidget(),
               ],
             ),
@@ -70,7 +69,7 @@ class _ShakeAnimationWidgetState extends State<ShakeAnimationWidget>
       builder: (context, child) {
         return Transform.translate(
           offset: Offset(_animation.value, 0),
-          child: Image.asset('assets/Shake1.png'), // Replace with your image
+          child: Image.asset('assets/icon/shaking.png'), // Replace with your image
         );
       },
     );

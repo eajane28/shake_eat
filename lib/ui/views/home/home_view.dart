@@ -28,7 +28,7 @@ class HomeView extends StackedView<HomeViewModel> {
                           child: SizedBox(
                             height: 250,
                             child: Image.asset(
-                              'assets/shake.png',
+                              'assets/icon/shaking.png',
                               fit: BoxFit.fitWidth,
                             ),
                           )),

@@ -1,6 +1,4 @@
 class SvgIcons {
   SvgIcons._();
-
-  static const String _rootPath = "assets/";
-  static const String dine = "${_rootPath}dine.svg";
+  static const String dine = "assets/icon/dine.svg";
 }

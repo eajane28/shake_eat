@@ -38,10 +38,18 @@ dev_dependencies:
 flutter_icons:
   android: true
   ios: true
-  image_path: "assets/icon.png"
+  image_path: "assets/launcher.png"
 
 flutter:
   uses-material-design: true
   assets:
     - assets/
+    - assets/dummy/
+    - assets/icon/
+    - assets/icon/onboarding/
+    - assets/logo/
+    - assets/restaurant/
+    - assets/restaurant/logo/
+    - assets/restaurant/product/
+    - assets/voucher/
 
