@@ -41,11 +41,11 @@ class HomeViewModel extends BaseViewModel {
 
   void navigateToShaking() {
     _navigationService.navigateToShakeTimerView();
-    Timer(const Duration(seconds: 3), () {
-      _navigationService.navigateToShakingView();
-      // Timer(const Duration(seconds: 3), () {
-      //   _navigationService.navigateToAfterShakeView();
-      // });
-    });
+    // Timer(const Duration(seconds: 3), () {
+    //   _navigationService.navigateToShakingView();
+    //   // Timer(const Duration(seconds: 3), () {
+    //   //   _navigationService.navigateToAfterShakeView();
+    //   // });
+    // });
   }
 }

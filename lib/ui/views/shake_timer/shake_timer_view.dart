@@ -12,7 +12,9 @@ class ShakeTimerView extends StackedView<ShakeTimerViewModel> {
     ShakeTimerViewModel viewModel,
     Widget? child,
   ) {
-    return Scaffold(
+    return WillPopScope(
+      onWillPop: () => viewModel.backPress(),
+      child: Scaffold(
       body: Center(
         child: Text(
           '${viewModel.timerDuration}',
@@ -22,6 +24,7 @@ class ShakeTimerView extends StackedView<ShakeTimerViewModel> {
           ),
         ),
       ),
+    ),
     );
   }
 
