@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:share/share.dart';
 import 'package:stacked/stacked.dart';
 import '../../common/svg_icons_constants.dart';
@@ -13,10 +14,10 @@ class InteractiveView extends StackedView<InteractiveViewModel> {
 
   @override
   Widget builder(
-    BuildContext context,
-    InteractiveViewModel viewModel,
-    Widget? child,
-  ) {
+      BuildContext context,
+      InteractiveViewModel viewModel,
+      Widget? child,
+      ) {
     return WillPopScope(
       onWillPop: () => viewModel.backPress(),
       child: Scaffold(
@@ -103,7 +104,11 @@ class InteractiveView extends StackedView<InteractiveViewModel> {
 
   @override
   InteractiveViewModel viewModelBuilder(
-    BuildContext context,
-  ) =>
+      BuildContext context,
+      ) =>
       InteractiveViewModel();
+
+  @override
+  void onViewModelReady(InteractiveViewModel viewModel) => SchedulerBinding.instance
+      .addPostFrameCallback((timeStamp) => viewModel.runStartupLogic());
 }

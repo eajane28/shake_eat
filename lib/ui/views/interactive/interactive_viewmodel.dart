@@ -6,16 +6,26 @@ import 'package:stacked_services/stacked_services.dart';
 import 'package:food_frenzy/app/app.locator.dart';
 
 class InteractiveViewModel extends BaseViewModel {
+  Object? get isFirstLaunch => null;
+
   Future<bool> backPress() async {
     return false;
   }
-
   final _navigationService = locator<NavigationService>();
-
+  Future runStartupLogic() async {
+    bool? isFirstLaunch;
+    final SharedPreferences prefs = await SharedPreferences.getInstance();
+    isFirstLaunch = prefs.getBool('isFirstLaunch');
+    if (kDebugMode) print("First launch 1 $isFirstLaunch");
+    if (isFirstLaunch == null) {
+      if (kDebugMode) print("First 2 launch");
+      _navigationService.replaceWithOnboardingView();
+      await prefs.setBool('isFirstLaunch', false); // set first launch to false
+    }
+  }
   void toHomeView() {
     _navigationService.navigateToHomeView();
   }
-
   void toShareView() {
     _navigationService.navigateToShareView();
   }
