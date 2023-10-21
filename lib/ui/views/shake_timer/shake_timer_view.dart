@@ -15,16 +15,16 @@ class ShakeTimerView extends StackedView<ShakeTimerViewModel> {
     return WillPopScope(
       onWillPop: () => viewModel.backPress(),
       child: Scaffold(
-      body: Center(
-        child: Text(
-          '${viewModel.timerDuration}',
-          style: const TextStyle(
-            fontSize: 150,
-            color: Colors.red,
+        body: Center(
+          child: Text(
+            '${viewModel.timerDuration}',
+            style: const TextStyle(
+              fontSize: 150,
+              color: Colors.red,
+            ),
           ),
         ),
       ),
-    ),
     );
   }
 

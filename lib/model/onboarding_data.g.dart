@@ -6,14 +6,15 @@ part of 'onboarding_data.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_OnboardingData _$$_OnboardingDataFromJson(Map<String, dynamic> json) =>
-    _$_OnboardingData(
+_$OnboardingDataImpl _$$OnboardingDataImplFromJson(Map<String, dynamic> json) =>
+    _$OnboardingDataImpl(
       imagePage: json['imagePage'] as String,
       title: json['title'] as String,
       message: json['message'] as String,
     );
 
-Map<String, dynamic> _$$_OnboardingDataToJson(_$_OnboardingData instance) =>
+Map<String, dynamic> _$$OnboardingDataImplToJson(
+        _$OnboardingDataImpl instance) =>
     <String, dynamic>{
       'imagePage': instance.imagePage,
       'title': instance.title,

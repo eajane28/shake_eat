@@ -12,7 +12,7 @@ class PanelWidget extends StatelessWidget {
           Column(
             children: [
               Image.asset(
-                'assets/arrow_up.png',
+                'assets/icon/arrow_up.png',
               ),
               const Text(
                 'Let\'s eat!',
@@ -25,7 +25,7 @@ class PanelWidget extends StatelessWidget {
             ],
           ),
           //TO DO: Add the map API
-          Image.asset('assets/map.png'),
+          Image.asset('assets/dummy/map.png'),
         ],
       );
 }

@@ -74,22 +74,22 @@ class _$OnboardingDataCopyWithImpl<$Res, $Val extends OnboardingData>
 }
 
 /// @nodoc
-abstract class _$$_OnboardingDataCopyWith<$Res>
+abstract class _$$OnboardingDataImplCopyWith<$Res>
     implements $OnboardingDataCopyWith<$Res> {
-  factory _$$_OnboardingDataCopyWith(
-          _$_OnboardingData value, $Res Function(_$_OnboardingData) then) =
-      __$$_OnboardingDataCopyWithImpl<$Res>;
+  factory _$$OnboardingDataImplCopyWith(_$OnboardingDataImpl value,
+          $Res Function(_$OnboardingDataImpl) then) =
+      __$$OnboardingDataImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({String imagePage, String title, String message});
 }
 
 /// @nodoc
-class __$$_OnboardingDataCopyWithImpl<$Res>
-    extends _$OnboardingDataCopyWithImpl<$Res, _$_OnboardingData>
-    implements _$$_OnboardingDataCopyWith<$Res> {
-  __$$_OnboardingDataCopyWithImpl(
-      _$_OnboardingData _value, $Res Function(_$_OnboardingData) _then)
+class __$$OnboardingDataImplCopyWithImpl<$Res>
+    extends _$OnboardingDataCopyWithImpl<$Res, _$OnboardingDataImpl>
+    implements _$$OnboardingDataImplCopyWith<$Res> {
+  __$$OnboardingDataImplCopyWithImpl(
+      _$OnboardingDataImpl _value, $Res Function(_$OnboardingDataImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -99,7 +99,7 @@ class __$$_OnboardingDataCopyWithImpl<$Res>
     Object? title = null,
     Object? message = null,
   }) {
-    return _then(_$_OnboardingData(
+    return _then(_$OnboardingDataImpl(
       imagePage: null == imagePage
           ? _value.imagePage
           : imagePage // ignore: cast_nullable_to_non_nullable
@@ -118,12 +118,12 @@ class __$$_OnboardingDataCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_OnboardingData implements _OnboardingData {
-  const _$_OnboardingData(
+class _$OnboardingDataImpl implements _OnboardingData {
+  const _$OnboardingDataImpl(
       {required this.imagePage, required this.title, required this.message});
 
-  factory _$_OnboardingData.fromJson(Map<String, dynamic> json) =>
-      _$$_OnboardingDataFromJson(json);
+  factory _$OnboardingDataImpl.fromJson(Map<String, dynamic> json) =>
+      _$$OnboardingDataImplFromJson(json);
 
   @override
   final String imagePage;
@@ -141,7 +141,7 @@ class _$_OnboardingData implements _OnboardingData {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_OnboardingData &&
+            other is _$OnboardingDataImpl &&
             (identical(other.imagePage, imagePage) ||
                 other.imagePage == imagePage) &&
             (identical(other.title, title) || other.title == title) &&
@@ -155,12 +155,13 @@ class _$_OnboardingData implements _OnboardingData {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_OnboardingDataCopyWith<_$_OnboardingData> get copyWith =>
-      __$$_OnboardingDataCopyWithImpl<_$_OnboardingData>(this, _$identity);
+  _$$OnboardingDataImplCopyWith<_$OnboardingDataImpl> get copyWith =>
+      __$$OnboardingDataImplCopyWithImpl<_$OnboardingDataImpl>(
+          this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_OnboardingDataToJson(
+    return _$$OnboardingDataImplToJson(
       this,
     );
   }
@@ -170,10 +171,10 @@ abstract class _OnboardingData implements OnboardingData {
   const factory _OnboardingData(
       {required final String imagePage,
       required final String title,
-      required final String message}) = _$_OnboardingData;
+      required final String message}) = _$OnboardingDataImpl;
 
   factory _OnboardingData.fromJson(Map<String, dynamic> json) =
-      _$_OnboardingData.fromJson;
+      _$OnboardingDataImpl.fromJson;
 
   @override
   String get imagePage;
@@ -183,6 +184,6 @@ abstract class _OnboardingData implements OnboardingData {
   String get message;
   @override
   @JsonKey(ignore: true)
-  _$$_OnboardingDataCopyWith<_$_OnboardingData> get copyWith =>
+  _$$OnboardingDataImplCopyWith<_$OnboardingDataImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

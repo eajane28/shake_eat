@@ -62,22 +62,22 @@ class _$DetailsDataCopyWithImpl<$Res, $Val extends DetailsData>
 }
 
 /// @nodoc
-abstract class _$$_DetailsDataCopyWith<$Res>
+abstract class _$$DetailsDataImplCopyWith<$Res>
     implements $DetailsDataCopyWith<$Res> {
-  factory _$$_DetailsDataCopyWith(
-          _$_DetailsData value, $Res Function(_$_DetailsData) then) =
-      __$$_DetailsDataCopyWithImpl<$Res>;
+  factory _$$DetailsDataImplCopyWith(
+          _$DetailsDataImpl value, $Res Function(_$DetailsDataImpl) then) =
+      __$$DetailsDataImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({String image});
 }
 
 /// @nodoc
-class __$$_DetailsDataCopyWithImpl<$Res>
-    extends _$DetailsDataCopyWithImpl<$Res, _$_DetailsData>
-    implements _$$_DetailsDataCopyWith<$Res> {
-  __$$_DetailsDataCopyWithImpl(
-      _$_DetailsData _value, $Res Function(_$_DetailsData) _then)
+class __$$DetailsDataImplCopyWithImpl<$Res>
+    extends _$DetailsDataCopyWithImpl<$Res, _$DetailsDataImpl>
+    implements _$$DetailsDataImplCopyWith<$Res> {
+  __$$DetailsDataImplCopyWithImpl(
+      _$DetailsDataImpl _value, $Res Function(_$DetailsDataImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -85,7 +85,7 @@ class __$$_DetailsDataCopyWithImpl<$Res>
   $Res call({
     Object? image = null,
   }) {
-    return _then(_$_DetailsData(
+    return _then(_$DetailsDataImpl(
       image: null == image
           ? _value.image
           : image // ignore: cast_nullable_to_non_nullable
@@ -96,11 +96,11 @@ class __$$_DetailsDataCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_DetailsData implements _DetailsData {
-  const _$_DetailsData({required this.image});
+class _$DetailsDataImpl implements _DetailsData {
+  const _$DetailsDataImpl({required this.image});
 
-  factory _$_DetailsData.fromJson(Map<String, dynamic> json) =>
-      _$$_DetailsDataFromJson(json);
+  factory _$DetailsDataImpl.fromJson(Map<String, dynamic> json) =>
+      _$$DetailsDataImplFromJson(json);
 
   @override
   final String image;
@@ -114,7 +114,7 @@ class _$_DetailsData implements _DetailsData {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_DetailsData &&
+            other is _$DetailsDataImpl &&
             (identical(other.image, image) || other.image == image));
   }
 
@@ -125,27 +125,27 @@ class _$_DetailsData implements _DetailsData {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_DetailsDataCopyWith<_$_DetailsData> get copyWith =>
-      __$$_DetailsDataCopyWithImpl<_$_DetailsData>(this, _$identity);
+  _$$DetailsDataImplCopyWith<_$DetailsDataImpl> get copyWith =>
+      __$$DetailsDataImplCopyWithImpl<_$DetailsDataImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_DetailsDataToJson(
+    return _$$DetailsDataImplToJson(
       this,
     );
   }
 }
 
 abstract class _DetailsData implements DetailsData {
-  const factory _DetailsData({required final String image}) = _$_DetailsData;
+  const factory _DetailsData({required final String image}) = _$DetailsDataImpl;
 
   factory _DetailsData.fromJson(Map<String, dynamic> json) =
-      _$_DetailsData.fromJson;
+      _$DetailsDataImpl.fromJson;
 
   @override
   String get image;
   @override
   @JsonKey(ignore: true)
-  _$$_DetailsDataCopyWith<_$_DetailsData> get copyWith =>
+  _$$DetailsDataImplCopyWith<_$DetailsDataImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

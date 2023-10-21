@@ -100,9 +100,7 @@ class NoVouchersView extends StackedView<NoVouchersViewModel> {
                         padding: const EdgeInsets.only(top: 345.0),
                         child: Column(
                           children: [
-                            Center(
-                              child: Image.asset('assets/emoji.png')
-                            ),
+                            Center(child: Image.asset('assets/emoji.png')),
                             const Padding(
                               padding: EdgeInsets.only(top: 80.0),
                               child: Text(

@@ -7,10 +7,10 @@ class AfterShakeView extends StackedView<AfterShakeViewModel> {
 
   @override
   Widget builder(
-      BuildContext context,
-      AfterShakeViewModel viewModel,
-      Widget? child,
-      ) {
+    BuildContext context,
+    AfterShakeViewModel viewModel,
+    Widget? child,
+  ) {
     final randomRestaurant = viewModel.getRandomRestaurant();
     final restaurantName = randomRestaurant['name'];
     final imagePath = randomRestaurant['imagePath'];

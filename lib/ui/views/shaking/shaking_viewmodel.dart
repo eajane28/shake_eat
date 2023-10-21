@@ -1,4 +1,3 @@
-
 import 'dart:async';
 
 import 'package:flutter/foundation.dart';
@@ -8,7 +7,6 @@ import 'package:stacked/stacked.dart';
 import 'package:stacked_services/stacked_services.dart';
 
 import '../../../app/app.locator.dart';
-
 
 class ShakingViewModel extends BaseViewModel {
   final _navigationService = locator<NavigationService>();
@@ -24,20 +22,22 @@ class ShakingViewModel extends BaseViewModel {
     _navigationService.navigateToHomeView();
     return false;
   }
-  ShakingViewModel() {
-      _detector = ShakeDetector.autoStart(
-        onPhoneShake: () {
-          _isShaking = true;
-          _shakeCount++; // Increment shake count
-          if (kDebugMode) print("Shaking. ShakeCount: $_shakeCount, MaxShake: $_maxShake"); // Print the shake count
-          if (shakeCount > _maxShake) {
-            _detector.stopListening();
-            _shakeCount = 0;
-            _navigationService.navigateToAfterShakeView();
-          }
 
-        },
-      );
+  ShakingViewModel() {
+    _detector = ShakeDetector.autoStart(
+      onPhoneShake: () {
+        _isShaking = true;
+        _shakeCount++; // Increment shake count
+        if (kDebugMode)
+          print(
+              "Shaking. ShakeCount: $_shakeCount, MaxShake: $_maxShake"); // Print the shake count
+        if (shakeCount > _maxShake) {
+          _detector.stopListening();
+          _shakeCount = 0;
+          _navigationService.navigateToAfterShakeView();
+        }
+      },
+    );
     notifyListeners();
   }
 

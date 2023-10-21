@@ -106,5 +106,4 @@ class InteractiveView extends StackedView<InteractiveViewModel> {
     BuildContext context,
   ) =>
       InteractiveViewModel();
-  void onViewModelReady(InteractiveViewModel viewModel) => viewModel.runStartupLogic();
 }

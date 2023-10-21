@@ -9,10 +9,10 @@ class DetailsViewModel extends BaseViewModel {
   final _navigationService = locator<NavigationService>();
   List detailsList = [
     const DetailsData(
-      image: 'assets/1.png',
+      image: 'assets/restaurant/product/paeng/1.png',
     ),
     const DetailsData(
-      image: 'assets/2.png',
+      image: 'assets/restaurant/product/paeng/2.png',
     )
   ];
   void navigateToRedeem() {

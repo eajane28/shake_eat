@@ -6,12 +6,12 @@ part of 'details_data.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_DetailsData _$$_DetailsDataFromJson(Map<String, dynamic> json) =>
-    _$_DetailsData(
+_$DetailsDataImpl _$$DetailsDataImplFromJson(Map<String, dynamic> json) =>
+    _$DetailsDataImpl(
       image: json['image'] as String,
     );
 
-Map<String, dynamic> _$$_DetailsDataToJson(_$_DetailsData instance) =>
+Map<String, dynamic> _$$DetailsDataImplToJson(_$DetailsDataImpl instance) =>
     <String, dynamic>{
       'image': instance.image,
     };

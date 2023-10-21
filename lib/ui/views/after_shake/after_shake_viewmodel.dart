@@ -63,9 +63,4 @@ class AfterShakeViewModel extends BaseViewModel {
     //   throw 'Could not launch';
     // }
   }
-
-
-
-
-
 }

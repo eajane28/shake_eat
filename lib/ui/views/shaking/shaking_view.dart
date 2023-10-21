@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
 import 'shaking_viewmodel.dart';
 
-
 class ShakingView extends StatelessWidget {
   const ShakingView({Key? key}) : super(key: key);
 
@@ -11,19 +10,20 @@ class ShakingView extends StatelessWidget {
     return ViewModelBuilder<ShakingViewModel>.reactive(
       viewModelBuilder: () => ShakingViewModel(),
       builder: (context, viewModel, child) {
-        return  WillPopScope(
+        return WillPopScope(
           onWillPop: () => viewModel.backPress(),
           child: Scaffold(
-          body: Center(
-            child: Stack(
-              alignment: Alignment.center,
-              children: [
-                if (!viewModel.isShaking) Image.asset('assets/icon/shaking.png'),
-                if (viewModel.isShaking) const ShakeAnimationWidget(),
-              ],
+            body: Center(
+              child: Stack(
+                alignment: Alignment.center,
+                children: [
+                  if (!viewModel.isShaking)
+                    Image.asset('assets/icon/shaking.png'),
+                  if (viewModel.isShaking) const ShakeAnimationWidget(),
+                ],
+              ),
             ),
           ),
-        ),
         );
       },
     );
@@ -69,7 +69,8 @@ class _ShakeAnimationWidgetState extends State<ShakeAnimationWidget>
       builder: (context, child) {
         return Transform.translate(
           offset: Offset(_animation.value, 0),
-          child: Image.asset('assets/icon/shaking.png'), // Replace with your image
+          child:
+              Image.asset('assets/icon/shaking.png'), // Replace with your image
         );
       },
     );
