@@ -1,16 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
 import 'package:stacked_services/stacked_services.dart';
-
-class PriceDialogViewModel extends BaseViewModel {
-  List<String> labels = ["Cheap", "Affordable", "Expensive"];
-  List<bool> checkBoxValues = [false, false, false];
-
-  void updateCheckBoxValue(int index, bool newValue) {
-    checkBoxValues[index] = newValue;
-    notifyListeners();
-  }
-}
+import 'price_dialog_viewmodel.dart';
 
 class PriceDialogUi extends StatelessWidget {
   final DialogRequest request;
@@ -27,21 +18,10 @@ class PriceDialogUi extends StatelessWidget {
     return ViewModelBuilder<PriceDialogViewModel>.reactive(
       viewModelBuilder: () => PriceDialogViewModel(),
       builder: (context, model, child) {
-        Color getColor(Set<MaterialState> states) {
-          const Set<MaterialState> interactiveStates = <MaterialState>{
-            MaterialState.selected,
-            MaterialState.focused,
-            MaterialState.pressed,
-          };
-          if (states.any(interactiveStates.contains)) {
-            return Colors.orange;
-          }
-          return Colors.white;
-        }
+        double maxSlider = 500;
 
         return Dialog(
-          shape:
-              RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
           backgroundColor: const Color(0xFFFBAB10),
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
@@ -58,40 +38,44 @@ class PriceDialogUi extends StatelessWidget {
                         fontWeight: FontWeight.w600),
                   ),
                 ),
-                for (int i = 0; i < model.labels.length; i++)
-                  Padding(
-                    padding: const EdgeInsets.symmetric(vertical: 4.0),
-                    child: Row(
-                      children: [
-                        const SizedBox(width: 30.0),
-                        SizedBox(
-                          height: 16,
-                          width: 16,
-                          child: ColoredBox(
-                            color: Colors.white,
-                            child: Checkbox(
-                              checkColor: Colors.black,
-                              fillColor:
-                                  MaterialStateProperty.resolveWith(getColor),
-                              value: model.checkBoxValues[i],
-                              onChanged: (bool? newValue) {
-                                model.updateCheckBoxValue(i, newValue ?? false);
-                              },
-                            ),
-                          ),
+                Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 4.0),
+                  child: Row(
+                    children: [
+                      const SizedBox(width: 30.0),
+                      Text(
+                        model.getPriceLabel(maxSlider), // Use the viewmodel method
+                        style: const TextStyle(
+                          color: Color(0xFFDA1D1D),
+                          fontSize: 20.0,
+                          fontWeight: FontWeight.w600,
                         ),
-                        const SizedBox(width: 9.0),
-                        Text(
-                          model.labels[i],
-                          style: const TextStyle(
-                            color: Color(0xFFDA1D1D),
-                            fontSize: 20.0,
-                            fontWeight: FontWeight.w600,
-                          ),
-                        ),
-                      ],
+                      ),
+                    ],
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 4.0),
+                  child: Slider(
+                    value: model.sliderValue,
+                    onChanged: (double newValue) {
+                      model.updateSliderValue(newValue);
+                    },
+                    min: 100,
+                    max: maxSlider,
+                    divisions: 19,
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 4.0),
+                  child: Text(
+                    '${model.sliderValue.toStringAsFixed(0)} php less', // Display the slider value
+                    style: const TextStyle(
+                      color: Color(0xFFDA1D1D),
+                      fontSize: 18.0,
                     ),
                   ),
+                ),
                 Padding(
                   padding: const EdgeInsets.symmetric(vertical: 4.0),
                   child: MaterialButton(

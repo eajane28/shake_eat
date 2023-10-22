@@ -1,16 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
 import 'package:stacked_services/stacked_services.dart';
-
-class DietDialogViewModel extends BaseViewModel {
-  List<String> labels = ["any", "chicken", "pork", "unli"];
-  List<bool> checkBoxValues = [false, false, false, false];
-
-  void updateCheckBoxValue(int index, bool newValue) {
-    checkBoxValues[index] = newValue;
-    notifyListeners();
-  }
-}
+import 'diet_dialog_viewmodel.dart'; // Import the view model
 
 class DietDialogUi extends StatelessWidget {
   final DialogRequest request;
@@ -26,6 +17,9 @@ class DietDialogUi extends StatelessWidget {
   Widget build(BuildContext context) {
     return ViewModelBuilder<DietDialogViewModel>.reactive(
       viewModelBuilder: () => DietDialogViewModel(),
+      onViewModelReady: (model) {
+        model.loadCheckBoxValues(); // Load data when the view model is ready
+      },
       builder: (context, model, child) {
         Color getColor(Set<MaterialState> states) {
           const Set<MaterialState> interactiveStates = <MaterialState>{
@@ -41,7 +35,7 @@ class DietDialogUi extends StatelessWidget {
 
         return Dialog(
           shape:
-              RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+          RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
           backgroundColor: const Color(0xFFFBAB10),
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
@@ -72,7 +66,7 @@ class DietDialogUi extends StatelessWidget {
                             child: Checkbox(
                               checkColor: Colors.black,
                               fillColor:
-                                  MaterialStateProperty.resolveWith(getColor),
+                              MaterialStateProperty.resolveWith(getColor),
                               value: model.checkBoxValues[i],
                               onChanged: (bool? newValue) {
                                 model.updateCheckBoxValue(i, newValue ?? false);

@@ -1,5 +1,4 @@
 import 'dart:async';
-
 import 'package:food_frenzy/app/app.dialogs.dart';
 import 'package:food_frenzy/app/app.locator.dart';
 import 'package:food_frenzy/app/app.router.dart';

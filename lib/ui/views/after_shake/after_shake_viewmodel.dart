@@ -6,23 +6,17 @@ import 'package:food_frenzy/app/app.router.dart';
 import 'package:stacked/stacked.dart';
 import 'package:stacked_services/stacked_services.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'package:food_frenzy/restuarant.dart';
 
 import '../../../app/app.locator.dart';
 
 class AfterShakeViewModel extends BaseViewModel {
   final _navigationService = locator<NavigationService>();
-  final List<Map<String, String>> restaurantOptions = [
-    {'name': 'MCDonald', 'imagePath': 'assets/restaurant/logo/paengs.png'},
-    {'name': 'Jollibee', 'imagePath': 'assets/restaurant/logo/paengs.png'},
-    {'name': 'Chowking', 'imagePath': 'assets/restaurant/logo/paengs.png'},
-    {'name': 'Pizza Hut', 'imagePath': 'assets/restaurant/logo/paengs.png'},
-    {'name': 'KFC', 'imagePath': 'assets/restaurant/logo/paengs.png'},
-    {'name': 'Subway', 'imagePath': 'assets/restaurant/logo/paengs.png'},
-    {'name': 'Burger King', 'imagePath': 'assets/restaurant/logo/paengs.png'},
-  ];
+
 
   Map<String, String> getRandomRestaurant() {
     final random = Random();
+    print(random);
     return restaurantOptions[random.nextInt(restaurantOptions.length)];
   }
 
