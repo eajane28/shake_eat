@@ -9,6 +9,8 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  permission_handler: ^11.0.1
+  geolocator: ^10.1.0
   fluttertoast: ^8.1.2
   sensors: ^2.0.3
   shared_preferences: ^2.2.1

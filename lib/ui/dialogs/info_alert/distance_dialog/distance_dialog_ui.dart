@@ -1,15 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
 import 'package:stacked_services/stacked_services.dart';
-
-class DistanceDialogViewModel extends BaseViewModel {
-  double sliderValue = 1;
-
-  void updateSliderValue(double newValue) {
-    sliderValue = newValue;
-    notifyListeners();
-  }
-}
+import 'distance_dialog_viewmodel.dart';
 
 class DistanceDialogUi extends StatelessWidget {
   final DialogRequest request;
@@ -26,20 +18,10 @@ class DistanceDialogUi extends StatelessWidget {
     return ViewModelBuilder<DistanceDialogViewModel>.reactive(
       viewModelBuilder: () => DistanceDialogViewModel(),
       builder: (context, model, child) {
-        double maxSlider = 20;
-        String distanceLabel = 'Near'; // Default label
-
-        if (model.sliderValue <= maxSlider / 3) {
-          distanceLabel = 'Near';
-        } else if (model.sliderValue <= (maxSlider / 3) * 2) {
-          distanceLabel = 'Moderate';
-        } else {
-          distanceLabel = 'Far';
-        }
+        double maxSlider = 10;
 
         return Dialog(
-          shape:
-              RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
           backgroundColor: const Color(0xFFFBAB10),
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
@@ -62,7 +44,7 @@ class DistanceDialogUi extends StatelessWidget {
                     children: [
                       const SizedBox(width: 30.0),
                       Text(
-                        distanceLabel, // Display the dynamically determined label
+                        model.getDistanceLabel(maxSlider), // Use the viewmodel method
                         style: const TextStyle(
                           color: Color(0xFFDA1D1D),
                           fontSize: 20.0,

@@ -1,34 +1,31 @@
-// Import necessary Flutter packages
-import 'package:flutter/material.dart';
 
-// Import custom modules and services
+import 'package:flutter/foundation.dart';
+import 'package:flutter/material.dart';
 import 'package:food_frenzy/app/app.bottomsheets.dart';
 import 'package:food_frenzy/app/app.dialogs.dart';
 import 'package:food_frenzy/app/app.locator.dart';
 import 'package:food_frenzy/app/app.router.dart';
+import 'package:permission_handler/permission_handler.dart';
 import 'package:stacked_services/stacked_services.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'firebase_options.dart';
+import 'util/toast.dart';
 
-// Entry point for the Flutter application
-Future<void> main() async {
-  // Ensure that Flutter is initialized
+
+Future <void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
-
-  await Firebase.initializeApp(
-    options: DefaultFirebaseOptions.currentPlatform,
-  );
-
-  // Initialize the service locator (dependency injection)
+  final locationStatus = await Permission.location.status;
+  if (!locationStatus.isGranted) {
+    if (kDebugMode) print("Location denied");
+    showToastMessage("Please grant location permission", 3);
+    Permission.location.request();
+  } else {
+    if(kDebugMode) print("location granted");
+  }
+  await Firebase.initializeApp( options: DefaultFirebaseOptions.currentPlatform);
   await setupLocator();
-
-  // Setup the UI for dialogs
   setupDialogUi();
-
-  // Setup the UI for bottom sheets
   setupBottomSheetUi();
-
-  // Run the Flutter application
   runApp(const MainApp());
 }
 

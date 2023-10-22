@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
-// import 'package:flutter/src/foundation/change_notifier.dart';
-// import 'package:flutter/src/widgets/framework.dart';
 import 'package:stacked/stacked.dart';
 import 'package:stacked_services/stacked_services.dart';
 
 class DietDialogViewModel extends BaseViewModel {
-  List<String> labels = ["any", "vegetarian", "pescatarian", "halal"];
+  List<String> labels = ["any", "chicken", "pork", "unli"];
   List<bool> checkBoxValues = [false, false, false, false];
 
   void updateCheckBoxValue(int index, bool newValue) {
