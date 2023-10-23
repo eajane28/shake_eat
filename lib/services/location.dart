@@ -80,7 +80,7 @@ double calculateDistance(Position from, Position to) {
 }
 
 void updateLocationEvery10sec() {
-  Timer.periodic(Duration(seconds: 10), (Timer timer) {
+  Timer.periodic(const Duration(seconds: 10), (Timer timer) {
     updateCurrentLocation();
   });
 }

@@ -115,9 +115,9 @@ class AfterShakeView extends StackedView<AfterShakeViewModel> {
                       onPressed: () {
                         viewModel.openMapWithDirections("SPBg868AV5zXueX47");
                       },
-                      icon: const Icon(Icons.map), // Google Maps icon
+                      icon: const Icon(Icons.redo), // Google Maps icon
                       label: const Text(
-                        'Open in Map',
+                        're-shake',
                         style: TextStyle(fontSize: 18.0),
                       ),
                     ),

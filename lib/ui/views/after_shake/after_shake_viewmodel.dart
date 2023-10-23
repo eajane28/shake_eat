@@ -6,7 +6,7 @@ import 'package:food_frenzy/app/app.router.dart';
 import 'package:stacked/stacked.dart';
 import 'package:stacked_services/stacked_services.dart';
 import 'package:url_launcher/url_launcher.dart';
-import 'package:food_frenzy/restuarant.dart';
+import 'package:food_frenzy/restuarant_data.dart';
 
 import '../../../app/app.locator.dart';
 
