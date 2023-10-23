@@ -19,7 +19,6 @@ import 'package:food_frenzy/ui/views/redeem_succes/redeem_succes_view.dart'
 import 'package:food_frenzy/ui/views/shake_timer/shake_timer_view.dart' as _i10;
 import 'package:food_frenzy/ui/views/shaking/shaking_view.dart' as _i5;
 import 'package:food_frenzy/ui/views/share/share_view.dart' as _i6;
-import 'package:food_frenzy/ui/views/startup/startup_view.dart' as _i3;
 import 'package:food_frenzy/ui/views/thanks/thanks_view.dart' as _i14;
 import 'package:stacked/stacked.dart' as _i1;
 import 'package:stacked_services/stacked_services.dart' as _i17;
@@ -78,10 +77,6 @@ class StackedRouter extends _i1.RouterBase {
       page: _i2.HomeView,
     ),
     _i1.RouteDef(
-      Routes.startupView,
-      page: _i3.StartupView,
-    ),
-    _i1.RouteDef(
       Routes.interactiveView,
       page: _i4.InteractiveView,
     ),
@@ -135,12 +130,6 @@ class StackedRouter extends _i1.RouterBase {
     _i2.HomeView: (data) {
       return _i16.MaterialPageRoute<dynamic>(
         builder: (context) => const _i2.HomeView(),
-        settings: data,
-      );
-    },
-    _i3.StartupView: (data) {
-      return _i16.MaterialPageRoute<dynamic>(
-        builder: (context) => const _i3.StartupView(),
         settings: data,
       );
     },

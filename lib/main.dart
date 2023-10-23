@@ -7,8 +7,6 @@ import 'package:food_frenzy/app/app.locator.dart';
 import 'package:food_frenzy/app/app.router.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:stacked_services/stacked_services.dart';
-import 'package:firebase_core/firebase_core.dart';
-import 'firebase_options.dart';
 import 'util/toast.dart';
 
 
@@ -22,7 +20,6 @@ Future <void> main() async {
   } else {
     if(kDebugMode) print("location granted");
   }
-  await Firebase.initializeApp( options: DefaultFirebaseOptions.currentPlatform);
   await setupLocator();
   setupDialogUi();
   setupBottomSheetUi();
