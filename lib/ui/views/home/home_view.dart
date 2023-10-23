@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:food_frenzy/ui/views/widgets/button.dart';
 import 'package:stacked/stacked.dart';
 import 'home_viewmodel.dart';
@@ -70,4 +71,8 @@ class HomeView extends StackedView<HomeViewModel> {
     BuildContext context,
   ) =>
       HomeViewModel();
+
+  @override
+  void onViewModelReady(HomeViewModel viewModel) => SchedulerBinding.instance
+      .addPostFrameCallback((timeStamp) => viewModel.initPrefs());
 }

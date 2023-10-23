@@ -1,11 +1,15 @@
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:stacked/stacked.dart';
+import 'package:food_frenzy/sharedprefs/value_init.dart';
 
 class PriceDialogViewModel extends BaseViewModel {
-  double sliderValue = 100;
+  double sliderValue = pricePref;
 
   void updateSliderValue(double newValue) {
     sliderValue = newValue;
+    pricePref = newValue;
     notifyListeners();
+    savePriceValue();
   }
 
   String getPriceLabel(double maxSlider) {
@@ -18,7 +22,11 @@ class PriceDialogViewModel extends BaseViewModel {
     } else {
       priceLabel = 'expensive';
     }
-
     return priceLabel;
+  }
+
+  Future<void> savePriceValue() async {
+    final prefs = await SharedPreferences.getInstance();
+    prefs.setDouble('Price_preference', sliderValue);
   }
 }

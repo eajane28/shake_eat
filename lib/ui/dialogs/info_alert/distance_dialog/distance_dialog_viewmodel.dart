@@ -1,10 +1,14 @@
+import 'package:food_frenzy/sharedprefs/value_init.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:stacked/stacked.dart';
 
 class DistanceDialogViewModel extends BaseViewModel {
-  double sliderValue = 1;
+  double sliderValue = distancePref;
 
   void updateSliderValue(double newValue) {
     sliderValue = newValue;
+    saveDistanceValue();
+    distancePref = newValue;
     notifyListeners();
   }
 
@@ -20,5 +24,9 @@ class DistanceDialogViewModel extends BaseViewModel {
     }
 
     return distanceLabel;
+  }
+  Future<void> saveDistanceValue() async {
+    final prefs = await SharedPreferences.getInstance();
+    prefs.setDouble('Distance_preference', sliderValue);
   }
 }

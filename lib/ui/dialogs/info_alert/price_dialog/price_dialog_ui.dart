@@ -63,13 +63,13 @@ class PriceDialogUi extends StatelessWidget {
                     },
                     min: 100,
                     max: maxSlider,
-                    divisions: 19,
+                    divisions: 500,
                   ),
                 ),
                 Padding(
                   padding: const EdgeInsets.symmetric(vertical: 4.0),
                   child: Text(
-                    '${model.sliderValue.toStringAsFixed(0)} php less', // Display the slider value
+                    '${model.sliderValue.toStringAsFixed(0)} php', // Display the slider value
                     style: const TextStyle(
                       color: Color(0xFFDA1D1D),
                       fontSize: 18.0,
