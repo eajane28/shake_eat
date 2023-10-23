@@ -1,7 +1,7 @@
 import 'package:flutter/foundation.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:stacked/stacked.dart';
-import 'package:food_frenzy/sharedprefs/value_init.dart';
+import 'package:food_frenzy/services/sharedprefs.dart';
 
 class DietDialogViewModel extends BaseViewModel {
   List<String> labels = ["any", "beef", "chicken", "pork", "vegetables"];

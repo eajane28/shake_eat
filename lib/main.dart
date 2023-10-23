@@ -8,7 +8,7 @@ import 'package:food_frenzy/app/app.router.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:stacked_services/stacked_services.dart';
 import 'util/toast.dart';
-
+import 'package:food_frenzy/services/location.dart';
 
 Future <void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -23,6 +23,7 @@ Future <void> main() async {
   await setupLocator();
   setupDialogUi();
   setupBottomSheetUi();
+  updateLocationEvery10sec();
   runApp(const MainApp());
 }
 

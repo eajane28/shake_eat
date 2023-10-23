@@ -1,4 +1,4 @@
-import 'package:food_frenzy/sharedprefs/value_init.dart';
+import 'package:food_frenzy/services/sharedprefs.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:stacked/stacked.dart';
 

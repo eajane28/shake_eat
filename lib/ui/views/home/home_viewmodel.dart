@@ -4,7 +4,7 @@ import 'package:food_frenzy/app/app.locator.dart';
 import 'package:food_frenzy/app/app.router.dart';
 import 'package:stacked/stacked.dart';
 import 'package:stacked_services/stacked_services.dart';
-import 'package:food_frenzy/sharedprefs/value_init.dart';
+import 'package:food_frenzy/services/sharedprefs.dart';
 
 class HomeViewModel extends BaseViewModel {
   final _dialogService = locator<DialogService>();
