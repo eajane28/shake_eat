@@ -1,9 +1,12 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:food_frenzy/restaurant_data.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class PanelWidget extends StatelessWidget {
   final ScrollController controller;
-  const PanelWidget({super.key, required this.controller});
-
+  PanelWidget({super.key, required this.controller});
+  final int price = theChosenRestaurant?['price'];
   @override
   Widget build(BuildContext context) => ListView(
         padding: const EdgeInsets.symmetric(horizontal: 22.0),
@@ -29,7 +32,7 @@ class PanelWidget extends StatelessWidget {
             padding: const EdgeInsets.only(top: 60.0),
             child: Center(
               child: Text(
-                "Jolibee alta cita fkj aturas aveiwn askldjf werasf",
+               theChosenRestaurant?['name'],
                 textAlign: TextAlign.center,
                 style: const TextStyle(
                   color: Colors.black87,
@@ -54,11 +57,11 @@ class PanelWidget extends StatelessWidget {
                 rows: [
                   DataRow(cells: [
                     DataCell(Text('Type of Foods')),
-                    DataCell(Text('various')),
+                    DataCell(Text(theChosenRestaurant?['type'])),
                   ]),
                   DataRow(cells: [
                     DataCell(Text('Average Price')),
-                    DataCell(Text('100 PhP')),
+                    DataCell(Text('₱ $price')),
                   ]),
                   DataRow(cells: [
                     DataCell(Text('Distance')),
@@ -68,7 +71,7 @@ class PanelWidget extends StatelessWidget {
           ),
             ElevatedButton(
               onPressed: () {
-              // Handle the button click here
+                openMapWithDirections("lksdfj");
               },
               style: ElevatedButton.styleFrom(
               backgroundColor: Color(0xFFDA1D1D),
@@ -85,4 +88,13 @@ class PanelWidget extends StatelessWidget {
 
         ],
       );
+}
+void openMapWithDirections(String mapId) async {
+  Uri map = Uri.https('maps.app.goo.gl', '/$mapId', {});
+  if (kDebugMode) {
+    print("Map created");
+    print(map);
+    print("Launching map");
+  }
+  launchUrl(map);
 }
