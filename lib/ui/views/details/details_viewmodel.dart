@@ -9,7 +9,16 @@ class DetailsViewModel extends BaseViewModel {
   final _navigationService = locator<NavigationService>();
   List detailsList = [
     const DetailsData(
-      image: 'assets/restaurant/product/paeng/1.png',
+      image: 'https://cloud-cube.s3.amazonaws.com/ck20q033epu8/public/uploads/MI-TSM2-updated.png',
+    ),
+    const DetailsData(
+      image: 'assets/restaurant/product/paeng/2.png',
+    ),
+    const DetailsData(
+      image: 'assets/restaurant/product/paeng/2.png',
+    ),
+    const DetailsData(
+      image: 'assets/restaurant/product/paeng/2.png',
     ),
     const DetailsData(
       image: 'assets/restaurant/product/paeng/2.png',

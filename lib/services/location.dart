@@ -18,13 +18,9 @@ Future<void> updateCurrentLocation() async {
   // Test if location services are enabled.
   serviceEnabled = await Geolocator.isLocationServiceEnabled();
   if (!serviceEnabled) {
-    // Location services are not enabled don't continue
-    // accessing the position and request users of the
-    // App to enable the location services.
     showToastMessage('Please enable location service', 5);
-    return Future.error('Location services are disabled.');
+    return;
   }
-
   permission = await Geolocator.checkPermission();
   if (permission == LocationPermission.denied) {
     permission = await Geolocator.requestPermission();
@@ -35,23 +31,17 @@ Future<void> updateCurrentLocation() async {
       // returned true. According to Android guidelines
       // your App should show an explanatory UI now.
       showToastMessage('Please grant location permission', 5);
-      return Future.error('Location permissions are denied');
+      return;
     }
   }
-
   if (permission == LocationPermission.deniedForever) {
     // Permissions are denied forever, handle appropriately.
     showToastMessage('Open the app settings and grant the location', 5);
-    return Future.error(
-        'Location permissions are permanently denied, we cannot request permissions.');
+    return;
   }
 
-  // When we reach here, permissions are granted and we can
-  // continue accessing the position of the device.
   currentLocation = await Geolocator.getCurrentPosition();
-  if (kDebugMode) {
-    print('current location: $currentLocation');
-  }
+  if (kDebugMode) print('current location: $currentLocation');
 }
 
 // calculate the distance between to Haversine formula

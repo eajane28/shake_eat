@@ -12,9 +12,23 @@ class AfterShakeView extends StackedView<AfterShakeViewModel> {
       Widget? child,
       ) {
     final randomRestaurant = viewModel.getRandomRestaurant();
-    final restaurantName = randomRestaurant['name'];
-    final imagePath = randomRestaurant['imagePath'];
-
+    final restaurantName = randomRestaurant?['name'];
+    final imagePath = randomRestaurant?['imagePath'];
+    const fallbackImagePath = 'assets/restaurant/logo/paengs.png';
+    Widget imageWidget;
+    try {
+      imageWidget = Image.network(
+        imagePath,
+        height: 289,
+        width: 400,
+      );
+    } catch (e) {
+      imageWidget = Image.asset(
+        fallbackImagePath,
+        height: 289,
+        width: 400,
+      );
+    }
     return WillPopScope(
       onWillPop: () => viewModel.backPress(),
       child: Scaffold(
@@ -101,11 +115,7 @@ class AfterShakeView extends StackedView<AfterShakeViewModel> {
                           left: 50.0,
                           right: 50.0,
                         ),
-                        child: Image.asset(
-                          imagePath!,
-                          height: 289,
-                          width: 400,
-                        ),
+                        child: imageWidget,
                       ),
                     ],
                   ),
