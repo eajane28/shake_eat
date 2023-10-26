@@ -126,7 +126,7 @@ class AfterShakeView extends StackedView<AfterShakeViewModel> {
                   ),
                   ElevatedButton(
                     onPressed: () {
-                      // Handle the button click here
+                      viewModel.navigateToShaking();
                     },
                     style: ElevatedButton.styleFrom(
                       backgroundColor: const Color(0xFFDA1D1D),
