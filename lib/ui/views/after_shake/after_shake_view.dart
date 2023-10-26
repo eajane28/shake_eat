@@ -123,20 +123,22 @@ class AfterShakeView extends StackedView<AfterShakeViewModel> {
                       ),
                     ],
                   ),
-                  Padding(
-                    padding: const EdgeInsets.only(top: 100.0),
-                    child: ElevatedButton.icon(
-                      onPressed: () {
-                        viewModel.openMapWithDirections("SPBg868AV5zXueX47");
-                      },
-                      icon: const Icon(Icons.redo), // Google Maps icon
-                      label: const Text(
-                        're-shake',
-                        style: TextStyle(fontSize: 18.0),
+                  ElevatedButton(
+                    onPressed: () {
+                      // Handle the button click here
+                    },
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: const Color(0xFFDA1D1D),
+                    ),
+                    child: const Text(
+                      "Shake Again",
+                      style: TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.white,
                       ),
                     ),
                   ),
-                  // Other widgets
                 ],
               ),
             ),
