@@ -44,9 +44,9 @@ class PanelWidget extends StatelessWidget {
           ),
           Container(
             color: Colors.white,
-            padding: EdgeInsets.all(20.0),
+            padding: const EdgeInsets.all(20.0),
             child: DataTable(
-                columns: [
+                columns: const [
                   DataColumn(
                     label: Text('Description'),
                   ),
@@ -56,14 +56,14 @@ class PanelWidget extends StatelessWidget {
                 ],
                 rows: [
                   DataRow(cells: [
-                    DataCell(Text('Type of Foods')),
+                    const DataCell(Text('Type of Foods')),
                     DataCell(Text(theChosenRestaurant?['type'])),
                   ]),
                   DataRow(cells: [
-                    DataCell(Text('Average Price')),
+                    const DataCell(Text('Average Price')),
                     DataCell(Text('₱ $price')),
                   ]),
-                  DataRow(cells: [
+                  const DataRow(cells: [
                     DataCell(Text('Distance')),
                     DataCell(Text('1 km')),
                   ])
@@ -71,12 +71,13 @@ class PanelWidget extends StatelessWidget {
           ),
             ElevatedButton(
               onPressed: () {
-                openMapWithDirections("lksdfj");
+                String mapID = theChosenRestaurant?['gmap'];
+                openMapWithDirections(mapID);
               },
               style: ElevatedButton.styleFrom(
-              backgroundColor: Color(0xFFDA1D1D),
+              backgroundColor: const Color(0xFFDA1D1D),
               ),
-              child: Text(
+              child: const Text(
                 "Let's go",
                 style: TextStyle(
                   fontSize: 18,
