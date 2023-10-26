@@ -118,6 +118,7 @@ class AfterShakeView extends StackedView<AfterShakeViewModel> {
                           top: 225.0,
                           left: 50.0,
                           right: 50.0,
+                          bottom: 150.0,
                         ),
                         child: imageWidget,
                       ),
