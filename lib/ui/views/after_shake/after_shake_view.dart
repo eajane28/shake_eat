@@ -96,13 +96,17 @@ class AfterShakeView extends StackedView<AfterShakeViewModel> {
                               ],
                             ),
                             Padding(
-                              padding: const EdgeInsets.only(top: 25.0),
-                              child: Text(
-                                restaurantName!,
-                                style: const TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 36.0,
-                                  fontWeight: FontWeight.w700,
+                              padding: const EdgeInsets.only(top: 25.0, left: 8.0, right: 8.0),
+                              child: Center(
+                                child: Text(
+                                  restaurantName!,
+                                  textAlign: TextAlign.center,
+                                  style: const TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 36.0,
+                                    fontWeight: FontWeight.w700,
+
+                                  ),
                                 ),
                               ),
                             ),
