@@ -34,6 +34,9 @@ class AfterShakeView extends StackedView<AfterShakeViewModel> {
       child: Scaffold(
         body: SafeArea(
           child: GestureDetector(
+            onHorizontalDragEnd: (details) {
+             if (details.primaryVelocity! < 0) viewModel.navigateToDetails(); // swipe left
+            },
             onTap: viewModel.navigateToDetails,
             child: SingleChildScrollView(
               child: Column(

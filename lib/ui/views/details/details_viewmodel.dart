@@ -24,4 +24,8 @@ class DetailsViewModel extends BaseViewModel {
   void navigateToRedeem() {
     _navigationService.navigateToNoVouchersView();
   }
+
+  void navigateToAfterShake() {
+    _navigationService.navigateToAfterShakeView();
+  }
 }

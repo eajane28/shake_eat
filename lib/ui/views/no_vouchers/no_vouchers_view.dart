@@ -21,6 +21,10 @@ class NoVouchersView extends StackedView<NoVouchersViewModel> {
         maxHeight: MediaQuery.of(context).size.height * .9,
         margin: const EdgeInsets.symmetric(horizontal: 22),
         body: SafeArea(
+          child: GestureDetector(
+            onHorizontalDragEnd: (details) {
+              if (details.primaryVelocity! > 0) viewModel.navigateToDetails(); // swipe right
+            },
           child: SingleChildScrollView(
             child: GestureDetector(
               onTap: null,
@@ -121,6 +125,7 @@ class NoVouchersView extends StackedView<NoVouchersViewModel> {
               ),
             ),
           ),
+        ),
         ),
         panelBuilder: (controller) => PanelWidget(
           controller: controller,

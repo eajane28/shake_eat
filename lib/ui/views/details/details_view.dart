@@ -16,6 +16,10 @@ class DetailsView extends StackedView<DetailsViewModel> {
     return Scaffold(
       body: SafeArea(
         child: GestureDetector(
+          onHorizontalDragEnd: (details) {
+            if (details.primaryVelocity! < 0) viewModel.navigateToRedeem(); // swipe left
+            else if (details.primaryVelocity! > 0) viewModel.navigateToAfterShake(); // swipe right
+          },
           onTap: viewModel.navigateToRedeem,
           child: SingleChildScrollView(
             child: Column(
