@@ -1,6 +1,7 @@
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:stacked/stacked.dart';
 import 'package:food_frenzy/services/sharedprefs.dart';
+import 'package:food_frenzy/restaurant_data.dart';
 
 class PriceDialogViewModel extends BaseViewModel {
   double sliderValue = pricePref;
@@ -28,5 +29,6 @@ class PriceDialogViewModel extends BaseViewModel {
   Future<void> savePriceValue() async {
     final prefs = await SharedPreferences.getInstance();
     prefs.setDouble('Price_preference', sliderValue);
+    generatePreferredRestaurant();
   }
 }

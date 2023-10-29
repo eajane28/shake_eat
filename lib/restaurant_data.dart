@@ -1,8 +1,11 @@
 import 'dart:math';
 import 'package:flutter/foundation.dart';
 import 'package:food_frenzy/services/location.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 double distancebetween = 0;
+List<int> preferredRestaurant = [];
+List<int> allPrice = [];
 Map<String, dynamic>? theChosenRestaurant; // Use dynamic to allow mixed types
 
 final List<Map<String, dynamic>> restaurantOptions = [
@@ -48,15 +51,53 @@ final List<Map<String, dynamic>> restaurantOptions = [
 
 void generateRandomRestaurant() {
   final random = Random();
-  if (restaurantOptions.isNotEmpty) {
+  if (preferredRestaurant.isNotEmpty){
+    final randomIndex = random.nextInt(preferredRestaurant.length);
+    theChosenRestaurant = restaurantOptions[preferredRestaurant[randomIndex]];
+  }
+  else {
     final randomIndex = random.nextInt(restaurantOptions.length);
     theChosenRestaurant = restaurantOptions[randomIndex];
-    calculateChoosenRestaurantDistance(theChosenRestaurant?['lat'], theChosenRestaurant?['long']);
-    if(kDebugMode) print(theChosenRestaurant);
   }
+  if(kDebugMode) print(theChosenRestaurant);
+  calculateChoosenRestaurantDistance(theChosenRestaurant?['lat'], theChosenRestaurant?['long']);
 }
 
-void generatePreferredRestaurant() {
+Future<void> generatePreferredRestaurant() async {
+  int priceMatch = 0;
+  List<int> preferred = [];
+  final prefs = await SharedPreferences.getInstance();
+  double? price = prefs.getDouble('Price_preference');
+  for (int i = 0; i < restaurantOptions.length; i++) {
+    final restaurant = restaurantOptions[i];
+    //allPrice.add(restaurant['price']);
+    if(restaurant['price'] <= price) {
+      if(price! <= 100) { // affordable
+        priceMatch++;
+        preferred.add(i);
+      }
+      else if(price > 100 && price <= 300 ) { // medium
+        if (restaurant['price'] > 100) {
+          priceMatch++;
+          preferred.add(i);
+        }
+      }
+      else { // expensive
+        if(restaurant['price'] > 300) {
+          priceMatch++;
+          preferred.add(i);
+        }
+      }
+    }
+  }
+  preferredRestaurant = preferred;
+  if (kDebugMode) {
+    print('preferred price: $price');
+    print('price matched: $priceMatch');
+    print(preferredRestaurant);
+    //print(allPrice);
+  }
+
 
 }
 
