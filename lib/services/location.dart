@@ -3,13 +3,21 @@ import 'dart:math';
 import 'package:flutter/foundation.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:food_frenzy/util/toast.dart';
+import 'package:food_frenzy/restaurant_data.dart';
 
 /// Determine the current position of the device.
 ///
 /// When the location services are not enabled or permissions
 /// are denied the `Future` will return an error.
-
 Position ?currentLocation;
+
+void calculateChoosenRestaurantDistance(double lat, double long) {
+  if(currentLocation != null && theChosenRestaurant !=null) {
+    distancebetween = calculateDistance(currentLocation!, lat, long);
+  }
+}
+
+
 
 Future<void> updateCurrentLocation() async {
   bool serviceEnabled;
@@ -45,14 +53,14 @@ Future<void> updateCurrentLocation() async {
 }
 
 // calculate the distance between to Haversine formula
-double calculateDistance(Position from, Position to) {
+double calculateDistance(Position currentLoc, double toLat, double toLong) {
   const double radius = 6371.0; // Earth's radius in kilometers
 
   // Convert latitude and longitude from degrees to radians
-  final double fromLatRad = from.latitude * (pi / 180);
-  final double fromLonRad = from.longitude * (pi / 180);
-  final double toLatRad = to.latitude * (pi / 180);
-  final double toLonRad = to.longitude * (pi / 180);
+  final double fromLatRad = currentLoc.latitude * (pi / 180);
+  final double fromLonRad = currentLoc.longitude * (pi / 180);
+  final double toLatRad = toLat * (pi / 180);
+  final double toLonRad = toLong * (pi / 180);
 
   // Calculate the differences
   final double latDiff = toLatRad - fromLatRad;

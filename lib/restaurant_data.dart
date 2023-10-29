@@ -1,14 +1,10 @@
-// import 'dart:convert';
-// import 'dart:io';
-// import 'package:flutter/foundation.dart';
-// import 'package:path_provider/path_provider.dart';
-
 import 'dart:math';
-import 'dart:convert';
-
 import 'package:flutter/foundation.dart';
+import 'package:food_frenzy/services/location.dart';
 
+double distancebetween = 0;
 Map<String, dynamic>? theChosenRestaurant; // Use dynamic to allow mixed types
+
 final List<Map<String, dynamic>> restaurantOptions = [
   {"name": "Mang Inasal - Remolador St.", "gmap":"r1Y69B3pSDHQvwto6", "lat":9.646012431631261, "long":123.8538016423286, "imagePath": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d0/Mang_Inasal.svg/2560px-Mang_Inasal.svg.png", "price":166, "type":"any", "menu":["https://www.manginasal.com/wp-content/uploads/2019/05/MI-PM1Paa-2019.png", "https://cloud-cube.s3.amazonaws.com/ck20q033epu8/public/uploads/MI_PechoLarge.png", "https://cloud-cube.s3.amazonaws.com/ck20q033epu8/public/uploads/1pc-Chicken-Inasal_450x275px_1595225654-min.png", "https://cloud-cube.s3.amazonaws.com/ck20q033epu8/public/uploads/MI-TSM1-Product-shot-EYE-LEVEL_FA.png", "https://cloud-cube.s3.amazonaws.com/ck20q033epu8/public/uploads/MI-TSM2-updated.png"]},
   {"name": "Mang Inasal - ICM", "gmap":"yDdm7uFXPCXHMb496", "lat":9.655514832950358, "long":123.86941278465721, "imagePath": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d0/Mang_Inasal.svg/2560px-Mang_Inasal.svg.png", "price":103, "type":"any", "menu":["https://cloud-cube.s3.amazonaws.com/ck20q033epu8/public/uploads/fiesta-meal-2.png", "https://cloud-cube.s3.amazonaws.com/ck20q033epu8/public/uploads/halo-halo-updated.png", "https://cloud-cube.s3.amazonaws.com/ck20q033epu8%2Fpublic%2Fuploads%2FCDL-Small.png", "https://www.manginasal.com/wp-content/uploads/2019/05/MI-PalabokSolo-2019.png", "https://cloud-cube.s3.amazonaws.com/ck20q033epu8/public/uploads/mi-bbq.png"]},
@@ -55,6 +51,7 @@ void generateRandomRestaurant() {
   if (restaurantOptions.isNotEmpty) {
     final randomIndex = random.nextInt(restaurantOptions.length);
     theChosenRestaurant = restaurantOptions[randomIndex];
+    calculateChoosenRestaurantDistance(theChosenRestaurant?['lat'], theChosenRestaurant?['long']);
     if(kDebugMode) print(theChosenRestaurant);
   }
 }

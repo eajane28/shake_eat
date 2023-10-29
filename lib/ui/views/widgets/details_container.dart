@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-
 import '../../../model/details_data.dart';
-import 'package:food_frenzy/restaurant_data.dart';
 
 class DetailsContainer extends StatelessWidget {
   const DetailsContainer({super.key, required this.item});

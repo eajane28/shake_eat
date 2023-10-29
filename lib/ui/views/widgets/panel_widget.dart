@@ -6,6 +6,7 @@ import 'package:url_launcher/url_launcher.dart';
 class PanelWidget extends StatelessWidget {
   final ScrollController controller;
   PanelWidget({super.key, required this.controller});
+  final int howFar = distancebetween.round();
   final int price = theChosenRestaurant?['price'];
   @override
   Widget build(BuildContext context) => ListView(
@@ -63,9 +64,9 @@ class PanelWidget extends StatelessWidget {
                     const DataCell(Text('Average Price')),
                     DataCell(Text('₱ $price')),
                   ]),
-                  const DataRow(cells: [
-                    DataCell(Text('Distance')),
-                    DataCell(Text('1 km')),
+                  DataRow(cells: [
+                    const DataCell(Text('Distance ~')),
+                    DataCell(Text('$howFar km')),
                   ])
                 ])
           ),
