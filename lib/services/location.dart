@@ -11,9 +11,9 @@ import 'package:food_frenzy/restaurant_data.dart';
 /// are denied the `Future` will return an error.
 Position ?currentLocation;
 
-void calculateChoosenRestaurantDistance(double lat, double long) {
+void calculateChosenRestaurantDistance(double lat, double long) {
   if(currentLocation != null && theChosenRestaurant !=null) {
-    distancebetween = calculateDistance(currentLocation!, lat, long);
+    distanceBetween = calculateDistance(currentLocation!, lat, long);
   }
 }
 
@@ -47,11 +47,41 @@ Future<void> updateCurrentLocation() async {
     showToastMessage('Open the app settings and grant the location', 5);
     return;
   }
-
+  Position? prevLoc = currentLocation;
   currentLocation = await Geolocator.getCurrentPosition();
+  if(currentLocation != null && prevLoc == null) {
+      generateRestaurantDistance();
+  }
+  else if(currentLocation != null && prevLoc != null ){
+    if(distanceBetweenPosition(currentLocation!, prevLoc) > 0.2) generateRestaurantDistance();
+  }
+
   if (kDebugMode) print('current location: $currentLocation');
 }
 
+  double distanceBetweenPosition(Position currentLoc, Position prevLoc){
+    const double radius = 6371.0; // Earth's radius in kilometers
+
+    // Convert latitude and longitude from degrees to radians
+    final double fromLatRad = currentLoc.latitude * (pi / 180);
+    final double fromLonRad = currentLoc.longitude * (pi / 180);
+    final double toLatRad = prevLoc.latitude * (pi / 180);
+    final double toLonRad = prevLoc.longitude * (pi / 180);
+
+    // Calculate the differences
+    final double latDiff = toLatRad - fromLatRad;
+    final double lonDiff = toLonRad - fromLonRad;
+
+    // Haversine formula
+    final double a = pow(sin(latDiff / 2), 2) +
+        cos(fromLatRad) * cos(toLatRad) * pow(sin(lonDiff / 2), 2);
+    final double c = 2 * atan2(sqrt(a), sqrt(1 - a));
+
+    // Calculate the distance
+    final double distance = radius * c;
+    print(distance);
+    return distance;
+  }
 // calculate the distance between to Haversine formula
 double calculateDistance(Position currentLoc, double toLat, double toLong) {
   const double radius = 6371.0; // Earth's radius in kilometers

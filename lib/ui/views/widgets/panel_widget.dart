@@ -6,7 +6,7 @@ import 'package:url_launcher/url_launcher.dart';
 class PanelWidget extends StatelessWidget {
   final ScrollController controller;
   PanelWidget({super.key, required this.controller});
-  final int howFar = distancebetween.round();
+  final int howFar = distanceBetween.round();
   final int price = theChosenRestaurant?['price'];
   @override
   Widget build(BuildContext context) => ListView(

@@ -3,9 +3,11 @@ import 'package:flutter/foundation.dart';
 import 'package:food_frenzy/services/location.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-double distancebetween = 0;
+double distanceBetween = 0;
+List<int> preferredRestaurantDistance = [];
 List<int> preferredRestaurant = [];
-List<int> allPrice = [];
+List<int> combinedPref = [];
+
 Map<String, dynamic>? theChosenRestaurant; // Use dynamic to allow mixed types
 
 final List<Map<String, dynamic>> restaurantOptions = [
@@ -51,16 +53,24 @@ final List<Map<String, dynamic>> restaurantOptions = [
 
 void generateRandomRestaurant() {
   final random = Random();
-  if (preferredRestaurant.isNotEmpty){
+  if (combinedPref.isNotEmpty){
+    final randomIndex = random.nextInt(combinedPref.length);
+    theChosenRestaurant = restaurantOptions[combinedPref[randomIndex]];
+  }
+  else if (preferredRestaurant.isNotEmpty){
     final randomIndex = random.nextInt(preferredRestaurant.length);
     theChosenRestaurant = restaurantOptions[preferredRestaurant[randomIndex]];
+  }
+  else if (preferredRestaurantDistance.isNotEmpty){
+    final randomIndex = random.nextInt(preferredRestaurant.length);
+    theChosenRestaurant = restaurantOptions[preferredRestaurantDistance[randomIndex]];
   }
   else {
     final randomIndex = random.nextInt(restaurantOptions.length);
     theChosenRestaurant = restaurantOptions[randomIndex];
   }
   if(kDebugMode) print(theChosenRestaurant);
-  calculateChoosenRestaurantDistance(theChosenRestaurant?['lat'], theChosenRestaurant?['long']);
+  calculateChosenRestaurantDistance(theChosenRestaurant?['lat'], theChosenRestaurant?['long']);
 }
 
 Future<void> generatePreferredRestaurant() async {
@@ -91,16 +101,58 @@ Future<void> generatePreferredRestaurant() async {
     }
   }
   preferredRestaurant = preferred;
+  if(preferredRestaurant.isNotEmpty && preferredRestaurantDistance.isNotEmpty){
+    combinedPref = findCommonElements(preferredRestaurant, preferredRestaurantDistance);
+  }
   if (kDebugMode) {
     print('preferred price: $price');
     print('price matched: $priceMatch');
     print(preferredRestaurant);
     //print(allPrice);
   }
-
-
 }
 
+Future<void> generateRestaurantDistance() async {
+  final prefs = await SharedPreferences.getInstance();
+  double? prefDistance = prefs.getDouble('Distance_preference');
+  if (kDebugMode) {
+    print('preferred distance: $prefDistance');
+  }
+  List<int> d = [];
+  for (int i = 0; i < restaurantOptions.length; i++){
+    final restaurant = restaurantOptions[i];
+    if(calculateDistance(currentLocation!, restaurant['lat'], restaurant['long']) <= prefDistance!) d.add(i);
+  }
+  preferredRestaurantDistance = d;
+  if(preferredRestaurant.isNotEmpty && preferredRestaurantDistance.isNotEmpty) {
+    combinedPref =
+        findCommonElements(preferredRestaurant, preferredRestaurantDistance);
+  }
+  if (kDebugMode) {
+    print(d);
+  }
+}
+
+
+List<int> findCommonElements(List<int> a, List<int> b) {
+  List<int> x = [];
+  int i = 0; // Index for list a
+  int j = 0; // Index for list b
+
+  while (i < a.length && j < b.length) {
+    if (a[i] == b[j]) {
+      x.add(a[i]);
+      i++;
+      j++;
+    } else if (a[i] < b[j]) {
+      i++;
+    } else {
+      j++;
+    }
+  }
+
+  return x;
+}
 
 
 
