@@ -4,6 +4,10 @@ import 'package:flutter/foundation.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:food_frenzy/util/toast.dart';
 import 'package:food_frenzy/restaurant_data.dart';
+import 'dart:convert';
+import 'package:http/http.dart' as http;
+const String googleApiKey = 'AIzaSyC3pQJHvd6SlGgxtNmzYTzJmjWUZqOS6j8&fbclid=IwAR3JhnkKXRv596gsdL0rECPVmY6ym0qlzKJ_EfMhjU8Obsfw1v9l-QQ32dE';
+
 
 /// Determine the current position of the device.
 ///
@@ -11,9 +15,20 @@ import 'package:food_frenzy/restaurant_data.dart';
 /// are denied the `Future` will return an error.
 Position ?currentLocation;
 
+String destinationDistance = '';
+String timeWalk = '';
+String timeDrive = '';
+
 void calculateChosenRestaurantDistance(double lat, double long) {
-  if(currentLocation != null && theChosenRestaurant !=null) {
+  if (kDebugMode) {
+    print('checking restaurant travel info');
+    print('current location: $currentLocation');
+    print('restaurant loc: $lat, $long');
+  }
+
+  if(currentLocation != null) {
     distanceBetween = calculateDistance(currentLocation!, lat, long);
+    getTravelInfo(googleApiKey, currentLocation!.latitude, currentLocation!.longitude, lat, long);
   }
 }
 
@@ -44,11 +59,12 @@ Future<void> updateCurrentLocation() async {
   }
   if (permission == LocationPermission.deniedForever) {
     // Permissions are denied forever, handle appropriately.
-    showToastMessage('Open the app settings and grant the location', 5);
+    showToastMessage('Grant the location in the settings', 5);
     return;
   }
   Position? prevLoc = currentLocation;
-  currentLocation = await Geolocator.getCurrentPosition();
+  Position curloc = await Geolocator.getCurrentPosition();
+  currentLocation = curloc;
   if(currentLocation != null && prevLoc == null) {
       generateRestaurantDistance();
   }
@@ -79,7 +95,9 @@ Future<void> updateCurrentLocation() async {
 
     // Calculate the distance
     final double distance = radius * c;
-    print(distance);
+    if (kDebugMode) {
+      print(distance);
+    }
     return distance;
   }
 // calculate the distance between to Haversine formula
@@ -111,4 +129,54 @@ void updateLocationEvery10sec() {
   Timer.periodic(const Duration(seconds: 10), (Timer timer) {
     updateCurrentLocation();
   });
+}
+
+
+// Get the distance between two origin using google api
+Future<void> getTravelInfo(String apiKey, double originLat, double originLng, double destinationLat, double destinationLng) async {
+  updateCurrentLocation();
+  timeDrive = '';
+  timeWalk = '';
+  destinationDistance = '';
+  Uri drivingUri = Uri.parse('https://maps.googleapis.com/maps/api/directions/json?'
+      'origin=$originLat,$originLng&'
+      'destination=$destinationLat,$destinationLng&'
+      'mode=driving&key=$apiKey');
+
+  Uri walkingUri = Uri.parse('https://maps.googleapis.com/maps/api/directions/json?'
+      'origin=$originLat,$originLng&'
+      'destination=$destinationLat,$destinationLng&'
+      'mode=walking&key=$apiKey');
+
+  final drivingResponse = await http.get(drivingUri);
+  final walkingResponse = await http.get(walkingUri);
+
+  if (drivingResponse.statusCode == 200 && walkingResponse.statusCode == 200) {
+    final drivingData = json.decode(drivingResponse.body);
+    final walkingData = json.decode(walkingResponse.body);
+
+    if (drivingData['status'] == 'OK' && walkingData['status'] == 'OK') {
+      timeDrive = drivingData['routes'][0]['legs'][0]['duration']['text'];
+      timeWalk = walkingData['routes'][0]['legs'][0]['duration']['text'];
+      destinationDistance = drivingData['routes'][0]['legs'][0]['distance']['text'];
+
+      if (kDebugMode) {
+        print('Distance: $destinationDistance');
+        print('Driving Duration: $timeDrive');
+        print('Walking Duration: $timeWalk');
+      }
+      return;
+    } else {
+      timeDrive = '';
+      timeWalk = '';
+      destinationDistance = '';
+      if (kDebugMode) {
+        print('Error in the response data');
+      }
+    }
+  } else {
+    if (kDebugMode) {
+      print('Error in the HTTP request');
+    }
+  }
 }

@@ -1,5 +1,6 @@
 import 'dart:async';
 
+
 import 'package:flutter/foundation.dart';
 import 'package:food_frenzy/app/app.router.dart';
 import 'package:shake/shake.dart';
@@ -27,7 +28,10 @@ class ShakingViewModel extends BaseViewModel {
   ShakingViewModel() {
     _detector = ShakeDetector.autoStart(
       onPhoneShake: () {
-        generateRandomRestaurant();
+        if (kDebugMode) {
+          print(_shakeCount);
+        }
+        if(_shakeCount == 0) generateRandomRestaurant();
         _isShaking = true;
         _shakeCount++; // Increment shake count
         if (kDebugMode) {

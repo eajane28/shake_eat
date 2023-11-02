@@ -51,8 +51,10 @@ final List<Map<String, dynamic>> restaurantOptions = [
   {"name": "Paeng’s Fried Chicken", "gmap":"cVhxLTg2PGjDTNY19", "lat":9.693579447896193, "long":123.8632845558862, "imagePath": "https://media-cdn.tripadvisor.com/media/photo-p/0e/86/a9/9c/make-your-fried-chicken.jpg", "price":162, "type":"chicken", "menu":["https://bohollocal.ph/cdn/shop/products/Paeng_sFriedChicken_960x.jpg?v=1587869875", "https://bohollocal.ph/cdn/shop/products/Paeng_sFriedChicken2_1_600x.jpg?v=1588261039", "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRltIPk3jzEURVwtXSC1qp-axVqwlOPLzhdgx3i-ZJ69usbr6SIpVmzDzzRDxLBGAJRdPg&usqp=CAU"]}
 ];
 
+// generate random restaurant considering the user preference
 void generateRandomRestaurant() {
   final random = Random();
+
   if (combinedPref.isNotEmpty){
     final randomIndex = random.nextInt(combinedPref.length);
     theChosenRestaurant = restaurantOptions[combinedPref[randomIndex]];
@@ -62,17 +64,23 @@ void generateRandomRestaurant() {
     theChosenRestaurant = restaurantOptions[preferredRestaurant[randomIndex]];
   }
   else if (preferredRestaurantDistance.isNotEmpty){
-    final randomIndex = random.nextInt(preferredRestaurant.length);
+    final randomIndex = random.nextInt(preferredRestaurantDistance.length);
     theChosenRestaurant = restaurantOptions[preferredRestaurantDistance[randomIndex]];
   }
   else {
     final randomIndex = random.nextInt(restaurantOptions.length);
     theChosenRestaurant = restaurantOptions[randomIndex];
   }
-  if(kDebugMode) print(theChosenRestaurant);
   calculateChosenRestaurantDistance(theChosenRestaurant?['lat'], theChosenRestaurant?['long']);
+  if(kDebugMode) {
+    print(theChosenRestaurant);
+    print('restaurantloc:');
+    print(theChosenRestaurant?['lat']);
+    print(theChosenRestaurant?['long']);
+  }
 }
 
+// get the matched preferred restaurant and place its index to an int list
 Future<void> generatePreferredRestaurant() async {
   int priceMatch = 0;
   List<int> preferred = [];
@@ -112,6 +120,7 @@ Future<void> generatePreferredRestaurant() async {
   }
 }
 
+// get the 'as the crow fly' distance of all the restaurant and place it on double list
 Future<void> generateRestaurantDistance() async {
   final prefs = await SharedPreferences.getInstance();
   double? prefDistance = prefs.getDouble('Distance_preference');
@@ -133,7 +142,7 @@ Future<void> generateRestaurantDistance() async {
   }
 }
 
-
+// find the common elements between two list, it's used to find the intersection of the matched preference
 List<int> findCommonElements(List<int> a, List<int> b) {
   List<int> x = [];
   int i = 0; // Index for list a
@@ -153,86 +162,3 @@ List<int> findCommonElements(List<int> a, List<int> b) {
 
   return x;
 }
-
-
-
-
-
-
-
-
-// void main() {
-//   generateRandomRestaurant();
-//
-//   if (theChosenRestaurant != null) {
-//     final restaurantJson = json.encode({
-//       "theChosenRestaurant": theChosenRestaurant,
-//       "restaurantOptions": restaurantOptions,
-//     });
-//
-//     if (kDebugMode) {
-//       print(restaurantJson);
-//     }
-//
-//     // Decoding the JSON string back to Dart objects
-//     final decodedData = json.decode(restaurantJson);
-//
-//     final decodedTheChosenRestaurant = decodedData["theChosenRestaurant"];
-//     final decodedRestaurantOptions = List<Map<String, dynamic>>.from(decodedData["restaurantOptions"]);
-//
-//     if (kDebugMode) {
-//       print("Decoded theChosenRestaurant: $decodedTheChosenRestaurant");
-//     }
-//     if (kDebugMode) {
-//       print("Decoded restaurantOptions: $decodedRestaurantOptions");
-//     }
-//   } else {
-//     if (kDebugMode) {
-//       print("No restaurant chosen.");
-//     }
-//   }
-// }
-
-// To implement get the json data from github hago
-// // filename for the data to be saved in app data
-// const filename = 'restaurant_data.json';
-//
-// Future<String> getLocalFilePath(String filename) async {
-//   final directory = await getApplicationDocumentsDirectory();
-//   return File('${directory.path}/$filename').path;
-// }
-//
-// Future<void> saveJsonToFile(Map<String, dynamic> jsonData, String filename) async {
-//   final filePath = await getLocalFilePath(filename);
-//   final file = File(filePath);
-//   await file.writeAsString(json.encode(jsonData));
-// }
-//
-// Future<Map<String, dynamic>> readJsonFromFile(String filename) async {
-//   final filePath = await getLocalFilePath(filename);
-//   final file = File(filePath);
-//   if (await file.exists()) {
-//     final contents = await file.readAsString();
-//     return json.decode(contents);
-//   } else {
-//     throw Exception('File not found: $filePath');
-//   }
-// }
-//
-// void main() async {
-//
-//   try {
-//     final jsonData = await readJsonFromFile(filename);
-//     // Use the JSON data as needed.
-//     if (kDebugMode) {
-//       print('JSON data loaded from $filename');
-//     }
-//     if (kDebugMode) {
-//       print('Data: $jsonData');
-//     }
-//   } catch (e) {
-//     if (kDebugMode) {
-//       print('Error: $e');
-//     }
-//   }
-// }
