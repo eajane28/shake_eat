@@ -63,7 +63,7 @@ class PanelWidget extends StatelessWidget {
                   ]),
                   DataRow(cells: [
                     const DataCell(Text('Average Price')),
-                    DataCell(Text('₱ $price')),
+                    DataCell(Text('₱ $preferredPrice')),
                   ]),
                   DataRow(cells: [
                     const DataCell(Text('Distance')),

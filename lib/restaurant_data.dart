@@ -7,6 +7,7 @@ double distanceBetween = 0;
 List<int> preferredRestaurantDistance = [];
 List<int> preferredRestaurant = [];
 List<int> combinedPref = [];
+double ? preferredPrice;
 
 Map<String, dynamic>? theChosenRestaurant; // Use dynamic to allow mixed types
 
@@ -82,15 +83,25 @@ void generateRandomRestaurant() {
 
 // get the matched preferred restaurant and place its index to an int list
 Future<void> generatePreferredRestaurant() async {
+  final random = Random();
+
   int priceMatch = 0;
   List<int> preferred = [];
   final prefs = await SharedPreferences.getInstance();
   double? price = prefs.getDouble('Price_preference');
+  if (kDebugMode) {
+    print(price);
+  }
+  preferredPrice = price! + random.nextInt(10) - 5;
+  preferredPrice?.toInt();
+  if (kDebugMode) {
+    print('Preferred price: $preferredPrice');
+  }
   for (int i = 0; i < restaurantOptions.length; i++) {
     final restaurant = restaurantOptions[i];
     //allPrice.add(restaurant['price']);
     if(restaurant['price'] <= price) {
-      if(price! <= 100) { // affordable
+      if(price<= 100) { // affordable
         priceMatch++;
         preferred.add(i);
       }

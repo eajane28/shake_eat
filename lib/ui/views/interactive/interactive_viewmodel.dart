@@ -4,6 +4,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:stacked/stacked.dart';
 import 'package:stacked_services/stacked_services.dart';
 import 'package:food_frenzy/app/app.locator.dart';
+import 'package:food_frenzy/restaurant_data.dart';
 
 class InteractiveViewModel extends BaseViewModel {
   Object? get isFirstLaunch => null;
@@ -22,6 +23,7 @@ class InteractiveViewModel extends BaseViewModel {
       _navigationService.replaceWithOnboardingView();
       await prefs.setBool('isFirstLaunch', false); // set first launch to false
     }
+    generatePreferredRestaurant();
   }
 
   Future<void> toHomeView() async {
