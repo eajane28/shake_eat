@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
+import 'package:flutter/services.dart';
 import 'package:share/share.dart';
 import 'package:stacked/stacked.dart';
 import '../../common/svg_icons_constants.dart';
@@ -8,6 +9,8 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:food_frenzy/constants.dart';
 
 import 'interactive_viewmodel.dart';
+
+
 
 class InteractiveView extends StackedView<InteractiveViewModel> {
   const InteractiveView({Key? key}) : super(key: key);
@@ -19,7 +22,7 @@ class InteractiveView extends StackedView<InteractiveViewModel> {
       Widget? child,
       ) {
     return WillPopScope(
-      onWillPop: () => viewModel.backPress(),
+      onWillPop: () => _onWillPop(context),
       child: Scaffold(
         body: Center(
           child: Column(
@@ -111,4 +114,37 @@ class InteractiveView extends StackedView<InteractiveViewModel> {
   @override
   void onViewModelReady(InteractiveViewModel viewModel) => SchedulerBinding.instance
       .addPostFrameCallback((timeStamp) => viewModel.runStartupLogic());
+}
+
+Future<bool> _onWillPop(BuildContext context) async {
+  _showExitConfirmationDialog(context);
+  return false; // Prevent the default back button behavior
+}
+
+Future<void> _showExitConfirmationDialog(BuildContext context) async {
+  showDialog(
+    context: context,
+    builder: (BuildContext context) {
+      return AlertDialog(
+        title: const Text('Exit ShakeItApp'),
+        content: const Text('Are you sure you want to exit the app?'),
+        actions: <Widget>[
+          TextButton(
+            onPressed: () {
+              Navigator.of(context).pop(); // Close the dialog
+            },
+            child: const Text('Cancel'),
+          ),
+          TextButton(
+            onPressed: () {
+              Navigator.of(context).pop(); // Close the dialog
+              // You can add code here to exit the app, e.g., SystemNavigator.pop();
+              SystemNavigator.pop(); // Exit the app
+            },
+            child: const Text('Exit'),
+          ),
+        ],
+      );
+    },
+  );
 }
